@@ -8,8 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = process.env.PORT || 3000;
-const host = '0.0.0.0';
+const port = 3000;
 
 // Ustawienia widoków i silnika szablonów
 app.set("views", path.join(__dirname, "views"));
