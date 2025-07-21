@@ -9,6 +9,7 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
 
 // Ustawienia widoków i silnika szablonów
 app.set("views", path.join(__dirname, "views"));
@@ -34,6 +35,6 @@ app.get("/main", (req, res) => {
 // (np. przycisk "Przejdź dalej" z linkiem href="/main")
 
 // Start serwera
-app.listen(port, () => {
+app.listen(port, host, () => {
   console.log(`Server running on port ${port}`);
 });
