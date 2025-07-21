@@ -1,0 +1,17 @@
+{
+  "name": "stronajaskra",
+  "version": "1.0.0",
+  "description": "Portfolio Jaskra",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+  "start": "node index.js"
+  },
+  "author": "Jakub Stożek",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}
