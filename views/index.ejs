@@ -1,31 +1,131 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="<%= lang === 'en' ? 'en' : 'pl' %>">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hubert Kniaź Imaginarium</title>
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
-<%- include('partials/header') %>
+  <%- include('partials/header') %>
+
+  <!-- PRZYCISK W PRAWYM GÓRNYM ROGU -->
+  <button id="language-toggle" type="button" class="language-button" aria-label="Przełącz język">
+    <%= lang === 'pl' ? 'EN' : 'PL' %>
+  </button>
+
+  <!-- Menu poziome wyśrodkowane -->
+  <nav class="top-menu">
+  <ul>
+    <li><a href="/o-mnie"><%= lang === 'pl' ? 'O mnie' : 'About me' %></a></li>
+
+    <li class="has-submenu">
+      <span class="menu-label" tabindex="0" role="button"><%= lang === 'pl' ? 'Materiały' : 'Materials' %></span>
+      <ul class="submenu">
+        <% if(lang === 'pl') { %>
+          <li>
+            <span>Worldbuilding – opowieść o świecie</span>
+            <a href="/materialy/worldbuilding">Zobacz więcej</a>
+          </li>
+          <li>
+            <span>Sylwetki bohaterów</span>
+            <a href="/materialy/characters">Zobacz więcej</a>
+          </li>
+          <li>
+            <span>Scena otwierająca/dialog</span>
+            <a href="/materialy/opening-scene">Zobacz więcej</a>
+          </li>
+          <li>
+            <span>Krótka fabuła</span>
+            <a href="/materialy/short-story">Zobacz więcej</a>
+          </li>
+          <li>
+            <span>Sesja RPG</span>
+            <a href="/materialy/rpg-session">Zobacz więcej</a>
+          </li>
+          <li>
+            <span>Gra Twine</span>
+            <a href="/materialy/twine-game">Zobacz więcej</a>
+          </li>
+        <% } else { %>
+          <li>
+            <span>Worldbuilding</span>
+            <a href="/materialy/worldbuilding">See more</a>
+          </li>
+          <li>
+            <span>Character Sketches</span>
+            <a href="/materialy/characters">See more</a>
+          </li>
+          <li>
+            <span>Opening Scene/dialog</span>
+            <a href="/materialy/opening-scene">See more</a>
+          </li>
+          <li>
+            <span>Short Story</span>
+            <a href="/materialy/short-story">See more</a>
+          </li>
+          <li>
+            <span>RPG Session</span>
+            <a href="/materialy/rpg-session">See more</a>
+          </li>
+          <li>
+            <span>Twine Game</span>
+            <a href="/materialy/twine-game">See more</a>
+          </li>
+        <% } %>
+      </ul>
+    </li>
+
+    <li><a href="/kontakt"><%= lang === 'pl' ? 'Kontakt' : 'Contact' %></a></li>
+  </ul>
+</nav>
+
+
   <main class="page-grid">
-    <aside>
-      <a href="#">Worldbuilding</a>
-      <a href="#">Character Sketches</a>
-      <a href="#">Opening Scene/Dialog</a>
-      <a href="#" class="active">Short Story</a>
-      <a href="#">RPG Session</a>
-      <a href="#">Twine Game</a>
-      <a href="#">Contact</a>
-    </aside>
     <section class="content-main">
-      <h1>What is Lorem Ipsum?</h1>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry...
-      </p>
+      <% if(lang === 'pl') { %>
+        <h1>Witamy na stronie Huberta Kniazia!</h1>
+        <p>
+          "Ale muszę Ci wyjaśnić, jak powstał ten błędny pogląd potępiania rozkoszy oraz wychwalania bólu...
+          <!-- pełny polski tekst -->
+        </p>
+      <% } else { %>
+        <h1>Welcome to Hubert Kniaź's website!</h1>
+        <p>
+          "But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will
+          give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the
+          master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure...
+          <!-- pełny angielski tekst -->
+        </p>
+      <% } %>
     </section>
   </main>
-<%- include('partials/footer') %>
+
+  <%- include('partials/footer') %>
+
+  <script>
+    const button = document.getElementById('language-toggle');
+
+    if (button) {
+      function updateButtonText() {
+        if (window.location.pathname === '/en-main') {
+          button.textContent = 'PL';
+        } else {
+          button.textContent = 'EN';
+        }
+      }
+
+      updateButtonText();
+
+      button.addEventListener('click', () => {
+        if (window.location.pathname === '/en-main') {
+          window.location.pathname = '/main';
+        } else {
+          window.location.pathname = '/en-main';
+        }
+      });
+    }
+  </script>
 </body>
 </html>

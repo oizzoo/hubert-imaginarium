@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="<%= lang === 'en' ? 'en' : 'pl' %>">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,17 +9,52 @@
 <body>
   <%- include('partials/header') %>
 
+  <!-- PRZYCISK W PRAWYM GÓRNYM ROGU -->
+  <button id="language-toggle" class="language-button" aria-label="Przełącz język">
+    <%= lang === 'pl' ? 'EN' : 'PL' %>
+  </button>
+
   <main class="landing-page">
     <div class="landing-content">
       <img src="/images/profile-picture.jpeg" alt="Hubert Kniaź" class="landing-photo" />
       <div class="landing-text">
-        <h1>Witaj w Imaginarium Huberta Kniazia</h1>
-        <p>Zapraszam do mojego świata kreatywności i wyobraźni.</p>
-        <a href="/main" class="landing-cta">Przejdź dalej</a>
+        <% if (lang === 'pl') { %>
+          <h1>Witaj w Imaginarium Huberta Kniazia</h1>
+          <p>Zapraszam do mojego świata kreatywności i wyobraźni.</p>
+          <a href="/main" class="landing-cta">Przejdź dalej</a>
+        <% } else { %>
+          <h1>Welcome to Hubert Kniaź's Imaginarium</h1>
+          <p>Welcome to my world of creativity and imagination.</p>
+          <a href="/en-main" class="landing-cta">Proceed</a>
+        <% } %>
       </div>
     </div>
   </main>
 
   <%- include('partials/footer') %>
+
+  <script>
+    const button = document.getElementById('language-toggle');
+    const proceedLink = document.querySelector('a.landing-cta');
+
+    function updateLangButtonAndLink() {
+      if(window.location.pathname === '/en') {
+        button.textContent = 'PL';
+        proceedLink.href = '/en-main';
+      } else {
+        button.textContent = 'EN';
+        proceedLink.href = '/main';
+      }
+    }
+    updateLangButtonAndLink();
+
+    button.addEventListener('click', () => {
+      if(window.location.pathname === '/en') {
+        window.location.pathname = '/';
+      } else {
+        window.location.pathname = '/en';
+      }
+    });
+  </script>
 </body>
 </html>

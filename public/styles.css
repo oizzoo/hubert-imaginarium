@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-/* html i body muszą mieć 100% szerokości i wysokości */
+/* html i body pełna szerokość i wysokość */
 html, body {
   height: 100%;
   width: 100%;
@@ -15,7 +15,7 @@ html, body {
   padding: 0;
 }
 
-/* Tło papieru na całej stronie - body */
+/* Body z tłem i fontem */
 body {
   background-image: url('/images/notebook-bg.jpg');
   background-size: cover;
@@ -57,54 +57,148 @@ h2 {
 /* Maszynowa czcionka */
 .machine-font {
   font-family: 'Special Elite', monospace, monospace;
-  font-size: 1.8rem; 
-  letter-spacing: 0.1em; 
+  font-size: 1.8rem;
+  letter-spacing: 0.1em;
   color: #4a3a24;
 }
 
-/* Układ grid z menu i treścią */
+/* Układ strony dla strony głównej z menu */
 .page-grid {
   flex: 1;
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 2rem;
+  display: block;
   padding: 2rem;
+}
 
+/* Menu górne - poziome i wyśrodkowane */
+.top-menu {
   width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
+  background: rgba(255, 255, 245, 0.5);
+  box-shadow: 0 2px 8px rgba(70, 56, 42, 0.08);
+  padding: 0.5rem 2.2rem;
+  font-family: 'Special Elite', monospace, monospace;
+  position: relative;
+  z-index: 20;
+}
+
+.top-menu ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  justify-content: center; /* wyśrodkowanie */
+}
+
+.top-menu > ul > li {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Pozycjonowanie dla li z submenu */
+.top-menu > ul > li.has-submenu {
+  position: relative;
+}
+
+/* Style linków */
+.top-menu a {
+  text-decoration: none;
+  color: #4a3a24;
+  font-size: 1.18rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  transition: background 0.16s ease-in-out;
+}
+
+.top-menu a:hover,
+.top-menu a:focus {
+  background: #eee7dc;
+  outline: none;
+}
+
+.top-menu > ul > li.has-submenu > span.menu-label {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  font-size: 1.18rem;
+  color: #4a3a24;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.16s ease-in-out;
+}
+
+.top-menu > ul > li.has-submenu > span.menu-label:hover,
+.top-menu > ul > li.has-submenu > span.menu-label:focus {
+  background: #eee7dc;
+  outline: none;
+}
+
+/* Ukrycie submenu na starcie */
+nav.top-menu > ul > li.has-submenu > ul.submenu {
+  display: none;
+}
+
+/* Pokazanie submenu po najechaniu lub focusie */
+nav.top-menu > ul > li.has-submenu:hover > ul.submenu,
+nav.top-menu > ul > li.has-submenu:focus-within > ul.submenu {
+  display: block;
+}
+
+/* Styl submenu */
+.submenu {
+  position: absolute;
+  top: 100%; /* pod linkiem 'Materiały' */
+  left: 0;
+  background: rgba(255, 255, 245, 0.96);
+  border: 1px solid #d3c8b6;
+  border-radius: 7px;
+  box-shadow: 0 6px 20px rgba(106, 93, 66, 0.07);
+  padding: 0.7rem 1rem;
+  min-width: 310px;
+  z-index: 30;
+  list-style: none;
   margin: 0;
 }
 
-/* Menu boczne */
-aside {
-  border-radius: 10px;
-  padding: 1.6rem;
-  border-right: 1px solid #d3c8b6;
-  font-size: 1.1rem;
-  min-width: 140px;
-  user-select: none;
-  position: relative;
-  z-index: 1;
-  background-color: rgba(255, 255, 245, 0.5);
+/* Elementy submenu – flex obok */
+.submenu li {
+  padding-left: 18px;
+  margin-top: 0.4em;
+  margin-bottom: 1.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.07rem;
+  white-space: normal;
 }
 
-aside a {
-  display: block;
+/* Opisy w submenu */
+.submenu span {
+  margin-right: 0.8em;
   color: #6a5d42;
-  text-decoration: none;
-  padding: 0.4rem 0.2rem;
+  max-width: 65%;
+  word-wrap: break-word;
+}
+
+/* Linki submenu */
+.submenu a {
+  color: #6a5d42;
+  background: transparent;
+  padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  margin-bottom: 0.12em;
-  transition: background 0.2s;
+  font-size: 0.97rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
 }
 
-aside a:hover,
-aside a.active {
-  background-color: #eee7dc;
+.submenu a:hover,
+.submenu a:focus {
+  background: #dfd1bb;
+  outline: none;
 }
 
-/* Główna treść */
+/* Strona główna treści */
 .content-main {
   padding: 2rem 2.5rem;
   font-size: 1.16rem;
@@ -117,6 +211,10 @@ aside a.active {
   position: relative;
   z-index: 1;
   background-color: rgba(255, 255, 245, 0.5);
+}
+
+.content-main h1 {
+  text-align: center;
 }
 
 /* Stopka */
@@ -133,14 +231,14 @@ footer {
   z-index: 1;
 }
 
-/* animacja kursora */
+/* Animacja kursora */
 .caret-cursor {
   position: relative;
-  right: -0.4em; /* przesunięcie w lewo */
+  right: -0.4em;
   animation: blink-caret 2.2s steps(2, start) infinite;
   display: inline-block;
   vertical-align: middle;
-  stroke: #4a3a24; 
+  stroke: #4a3a24;
 }
 
 @keyframes blink-caret {
@@ -170,19 +268,17 @@ footer {
     padding: 1.2rem 0.5rem;
     border-radius: 0 0 7px 7px;
   }
-
-  
 }
 
-
-/* --- STYLES FOR LANDING PAGE --- */
+/* --- Stylizacja landing page (jak w Twoim kodzie) --- */
 .landing-page {
   flex: 1;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3rem 1rem;
+  padding-top: 0;
+  padding-bottom: 8rem;
   background: rgba(255,255,255,0.0);
   box-sizing: border-box;
 }
@@ -242,7 +338,37 @@ footer {
   cursor: pointer;
 }
 
-/* Responsywność */
+/* Stylizacja przycisku en/pl */ 
+
+.language-button {
+  position: fixed; /* aby przycisk był na stałe w prawym górnym rogu */
+  top: 35px;       /* odległość od góry strony */
+  right: 100px;     /* odległość od prawej strony */
+  z-index: 9999;   /* na wierzchu innych elementów */
+  
+  font-family: 'Special Elite', monospace, monospace;
+  font-size: 1rem;
+  padding: 0.4rem 0.8rem;
+
+  border: 2px solid #6a5d42;
+  background-color: transparent;
+  color: #6a5d42;
+  border-radius: 6px;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.language-button:hover,
+.language-button:focus {
+  background-color: #6a5d42;
+  color: white;
+  outline: none;
+}
+
+/* Responsywność landing page */
 @media (max-width: 600px) {
   .landing-content {
     max-width: 90vw;
