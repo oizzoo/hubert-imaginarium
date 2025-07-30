@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="<%= lang === 'en' ? 'en' : 'pl' %>">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= lang === 'pl' ? 'O mnie - Hubert Kniaź' : 'About Me - Hubert Kniaź' %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+    <!-- PRZYCISK W PRAWYM GÓRNYM ROGU -->
+  <button id="language-toggle" type="button" class="language-button" aria-label="Przełącz język">
+    <%= lang === 'pl' ? 'EN' : 'PL' %>
+  </button>
+
+  <main class="page-grid">
+    <section class="content-main">
+      <% if (lang === 'pl') { %>
+        <h1>O mnie</h1>
+        <p>
+          Cześć! Jestem Hubert Kniaź, pasjonat świata opowieści i kreatywnego tworzenia.  
+          Ta strona jest moim małym Imaginarium, gdzie dzielę się materiałami, które pomogą Ci rozwijać wyobraźnię i pisać swoje historie.
+        </p>
+        <p>
+          Zachęcam Cię do zapoznania się z moimi materiałami, które znajdziesz poniżej.
+        </p>
+        <a href="/main" class="landing-cta">Wróć na stronę główną</a>
+      <% } else { %>
+        <h1>About Me</h1>
+        <p>
+          Hello! I'm Hubert Kniaź, a passionate storyteller and creative mind.  
+          This site serves as my little Imaginarium where I share materials to help you develop imagination and write your stories.
+        </p>
+        <a href="/en-main" class="back-link">Go back to main page</a>
+      <% } %>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+
+<script>
+  const button = document.getElementById('language-toggle');
+
+  if (button) {
+    function updateButtonText() {
+      // Sprawdzamy obecną ścieżkę i ustawiamy tekst przycisku
+      if (window.location.pathname === '/en-o-mnie') {
+        button.textContent = 'PL';
+      } else if (window.location.pathname === '/o-mnie') {
+        button.textContent = 'EN';
+      } else {
+        button.textContent = 'EN';
+      }
+    }
+
+    updateButtonText();
+
+    button.addEventListener('click', () => {
+      if (window.location.pathname === '/en-o-mnie') {
+        window.location.pathname = '/o-mnie';
+      } else if (window.location.pathname === '/o-mnie') {
+        window.location.pathname = '/en-o-mnie';
+      } else {
+        window.location.pathname = '/o-mnie';
+      }
+    });
+  }
+</script>
+
+</body>
+
+</html>

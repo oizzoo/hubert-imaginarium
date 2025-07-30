@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 /* Reset box-sizing i marginesów/paddingów */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 /* html i body pełna szerokość i wysokość */
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   font-family: 'Special Elite', monospace, monospace;
@@ -88,14 +91,14 @@ h2 {
 }
 
 /* Pozycje menu */
-.side-menu > ul > li {
+.side-menu>ul>li {
   position: relative;
   display: block;
   white-space: normal;
 }
 
 /* Pozycja z submenu */
-.side-menu > ul > li.has-submenu {
+.side-menu>ul>li.has-submenu {
   position: relative;
 }
 
@@ -117,7 +120,7 @@ h2 {
 }
 
 /* Styl nagłówków submenu jako span.menu-label */
-.side-menu > ul > li.has-submenu > span.menu-label {
+.side-menu>ul>li.has-submenu>span.menu-label {
   display: block;
   padding: 0.5rem 1rem;
   font-size: 1.22rem;
@@ -127,21 +130,21 @@ h2 {
   transition: background 0.16s ease-in-out;
 }
 
-.side-menu > ul > li.has-submenu > span.menu-label:hover,
-.side-menu > ul > li.has-submenu > span.menu-label:focus {
+.side-menu>ul>li.has-submenu>span.menu-label:hover,
+.side-menu>ul>li.has-submenu>span.menu-label:focus {
   background: #eee7dc;
   outline: none;
 }
 
 /* Ukrycie submenu - domyślnie */
-nav.side-menu > ul > li.has-submenu > ul.submenu {
+nav.side-menu>ul>li.has-submenu>ul.submenu {
   display: none;
   margin-left: 1rem;
 }
 
 /* Pokazanie submenu na hover/focus */
-nav.side-menu > ul > li.has-submenu:hover > ul.submenu,
-nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
+nav.side-menu>ul>li.has-submenu:hover>ul.submenu,
+nav.side-menu>ul>li.has-submenu:focus-within>ul.submenu {
   display: block;
   position: relative;
   top: 0;
@@ -244,10 +247,14 @@ footer {
 }
 
 @keyframes blink-caret {
-  0%, 50% {
+
+  0%,
+  50% {
     opacity: 1;
   }
-  50.01%, 100% {
+
+  50.01%,
+  100% {
     opacity: 0;
   }
 }
@@ -350,21 +357,25 @@ footer {
     padding: 1rem;
     gap: 1.2rem;
   }
+
   .side-menu {
     width: 100%;
     position: relative;
     box-shadow: none;
     border-radius: 0 0 7px 7px;
   }
+
   .side-menu ul {
     flex-direction: row;
     justify-content: center;
     gap: 1.5rem;
   }
-  .side-menu > ul > li {
+
+  .side-menu>ul>li {
     display: inline-flex;
   }
-  nav.side-menu > ul > li.has-submenu > ul.submenu {
+
+  nav.side-menu>ul>li.has-submenu>ul.submenu {
     position: absolute;
     top: 100%;
     left: 0;
@@ -376,10 +387,12 @@ footer {
     min-width: 310px;
     display: none;
   }
-  nav.side-menu > ul > li.has-submenu:hover > ul.submenu,
-  nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
+
+  nav.side-menu>ul>li.has-submenu:hover>ul.submenu,
+  nav.side-menu>ul>li.has-submenu:focus-within>ul.submenu {
     display: block;
   }
+
   .submenu {
     padding-left: 0;
     margin-left: 0;
@@ -391,18 +404,154 @@ footer {
   .landing-content {
     max-width: 90vw;
   }
+
   .landing-photo {
     width: 160px;
     height: 160px;
   }
+
   .landing-text h1 {
     font-size: 2rem;
   }
+
   .landing-text p {
     font-size: 1rem;
   }
+
   .landing-cta {
     font-size: 1rem;
     padding: 0.75rem 1.8rem;
   }
+}
+
+/* STRONA KONTAKTOWA */
+
+/* Wyśrodkowanie zawartości sekcji */
+.content-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+/* Lista linków wycentrowana */
+.content-main ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.content-main ul li {
+  font-size: 1.1rem;
+}
+
+.content-main ul li a {
+  color: #6a5d42;
+  text-decoration: none;
+}
+
+.content-main ul li a:hover,
+.content-main ul li a:focus {
+  text-decoration: underline;
+}
+
+/* Ujednolicone przyciski */
+.landing-cta {
+  display: inline-block;
+  background: #6a5d42;
+  color: white;
+  text-decoration: none;
+  padding: 0.9rem 2.2rem;
+  font-size: 1.15rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 12px rgba(106, 93, 66, 0.5);
+  transition: background-color 0.3s ease;
+  user-select: none;
+
+  width: 220px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.landing-cta:hover,
+.landing-cta:focus {
+  background: #4a3a24;
+  outline: none;
+}
+
+.back-link {
+  color: #8B0000;
+  /* np. ciemnoczerwony, podmień na dowolny kolor */
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 1rem;
+  user-select: none;
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+
+/* Modal - nakładka */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal - zawartość */
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Przycisk zamykający (X) */
+.modal-close-btn {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Styl inputów i textarea w formularzu */
+#contact-form input[type="email"],
+#contact-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Special Elite', monospace;
+  font-size: 1rem;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+#contact-form label {
+  font-weight: bold;
+  margin-top: 0.6rem;
+  display: block;
 }

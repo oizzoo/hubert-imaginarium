@@ -6,10 +6,9 @@
   <title>Hubert Kniaź Imaginarium - Landing Page</title>
   <link rel="stylesheet" href="/styles.css" />
 </head>
-<body>
+<body class="page-landing">
   <%- include('partials/header') %>
 
-  <!-- PRZYCISK W PRAWYM GÓRNYM ROGU -->
   <button id="language-toggle" class="language-button" aria-label="Przełącz język">
     <%= lang === 'pl' ? 'EN' : 'PL' %>
   </button>
@@ -38,7 +37,7 @@
     const proceedLink = document.querySelector('a.landing-cta');
 
     function updateLangButtonAndLink() {
-      if(window.location.pathname === '/en') {
+      if (window.location.pathname === '/en') {
         button.textContent = 'PL';
         proceedLink.href = '/en-main';
       } else {
@@ -49,7 +48,7 @@
     updateLangButtonAndLink();
 
     button.addEventListener('click', () => {
-      if(window.location.pathname === '/en') {
+      if (window.location.pathname === '/en') {
         window.location.pathname = '/';
       } else {
         window.location.pathname = '/en';
