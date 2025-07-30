@@ -11,21 +11,14 @@
 html, body {
   height: 100%;
   width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* Body z tłem i fontem */
-body {
-  background-image: url('/images/notebook-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-  width: 100vw;
   font-family: 'Special Elite', monospace, monospace;
   color: #4a3a24;
+}
+
+body {
+  background: url('/images/notebook-bg.jpg') center/cover no-repeat fixed;
+  min-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
 }
@@ -34,7 +27,6 @@ body {
 header {
   padding: 2rem 0 1.2rem;
   text-align: center;
-  font-family: 'Special Elite', monospace, monospace;
   font-size: 2.3rem;
   letter-spacing: 0.04em;
   user-select: none;
@@ -42,6 +34,7 @@ header {
   position: relative;
 }
 
+/* Nagłówki */
 h1 {
   font-size: 4.5rem;
   color: #4a3a24;
@@ -56,150 +49,159 @@ h2 {
 
 /* Maszynowa czcionka */
 .machine-font {
-  font-family: 'Special Elite', monospace, monospace;
   font-size: 1.8rem;
   letter-spacing: 0.1em;
   color: #4a3a24;
 }
 
-/* Układ strony dla strony głównej z menu */
+/* Układ strony — menu pionowe (side-menu) z lewej, content z prawej */
 .page-grid {
   flex: 1;
-  display: block;
+  display: flex;
   padding: 2rem;
+  gap: 2rem;
 }
 
-/* Menu górne - poziome i wyśrodkowane */
-.top-menu {
-  width: 100%;
+/* Menu boczne po lewej */
+.side-menu {
+  height: 100%;
+  width: 220px;
   background: rgba(255, 255, 245, 0.5);
-  box-shadow: 0 2px 8px rgba(70, 56, 42, 0.08);
-  padding: 0.5rem 2.2rem;
+  box-shadow: 2px 0 8px rgba(70, 56, 42, 0.1);
+  padding: 1rem 1.5rem;
   font-family: 'Special Elite', monospace, monospace;
-  position: relative;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  border-radius: 7px;
   z-index: 20;
 }
 
-.top-menu ul {
+/* Lista menu pionowa */
+.side-menu ul {
   display: flex;
+  flex-direction: column;
   list-style: none;
-  gap: 30px;
-  align-items: center;
+  gap: 1.3rem;
   margin: 0;
   padding: 0;
-  justify-content: center; /* wyśrodkowanie */
 }
 
-.top-menu > ul > li {
+/* Pozycje menu */
+.side-menu > ul > li {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
+  display: block;
+  white-space: normal;
 }
 
-/* Pozycjonowanie dla li z submenu */
-.top-menu > ul > li.has-submenu {
+/* Pozycja z submenu */
+.side-menu > ul > li.has-submenu {
   position: relative;
 }
 
-/* Style linków */
-.top-menu a {
+/* Linki menu pionowego */
+.side-menu a.menu-link {
+  display: block;
   text-decoration: none;
   color: #4a3a24;
-  font-size: 1.18rem;
-  padding: 0.45rem 0.9rem;
+  font-size: 1.22rem;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
   transition: background 0.16s ease-in-out;
 }
 
-.top-menu a:hover,
-.top-menu a:focus {
+.side-menu a.menu-link:hover,
+.side-menu a.menu-link:focus {
   background: #eee7dc;
   outline: none;
 }
 
-.top-menu > ul > li.has-submenu > span.menu-label {
-  display: inline-block;
-  padding: 0.45rem 0.9rem;
-  font-size: 1.18rem;
+/* Styl nagłówków submenu jako span.menu-label */
+.side-menu > ul > li.has-submenu > span.menu-label {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1.22rem;
   color: #4a3a24;
   cursor: pointer;
   border-radius: 6px;
   transition: background 0.16s ease-in-out;
 }
 
-.top-menu > ul > li.has-submenu > span.menu-label:hover,
-.top-menu > ul > li.has-submenu > span.menu-label:focus {
+.side-menu > ul > li.has-submenu > span.menu-label:hover,
+.side-menu > ul > li.has-submenu > span.menu-label:focus {
   background: #eee7dc;
   outline: none;
 }
 
-/* Ukrycie submenu na starcie */
-nav.top-menu > ul > li.has-submenu > ul.submenu {
+/* Ukrycie submenu - domyślnie */
+nav.side-menu > ul > li.has-submenu > ul.submenu {
   display: none;
+  margin-left: 1rem;
 }
 
-/* Pokazanie submenu po najechaniu lub focusie */
-nav.top-menu > ul > li.has-submenu:hover > ul.submenu,
-nav.top-menu > ul > li.has-submenu:focus-within > ul.submenu {
+/* Pokazanie submenu na hover/focus */
+nav.side-menu > ul > li.has-submenu:hover > ul.submenu,
+nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
   display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding-left: 0;
+  min-width: auto;
+  margin-top: 0.4rem;
 }
 
-/* Styl submenu */
+/* Styl submenu dopasowany do pionowego menu */
 .submenu {
-  position: absolute;
-  top: 100%; /* pod linkiem 'Materiały' */
-  left: 0;
-  background: rgba(255, 255, 245, 0.96);
-  border: 1px solid #d3c8b6;
-  border-radius: 7px;
-  box-shadow: 0 6px 20px rgba(106, 93, 66, 0.07);
-  padding: 0.7rem 1rem;
-  min-width: 310px;
-  z-index: 30;
   list-style: none;
   margin: 0;
-}
-
-/* Elementy submenu – flex obok */
-.submenu li {
-  padding-left: 18px;
-  margin-top: 0.4em;
-  margin-bottom: 1.1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.07rem;
+  padding-left: 1rem;
   white-space: normal;
 }
 
-/* Opisy w submenu */
+/* Elementy submenu */
+.submenu li.submenu-item {
+  padding-left: 0;
+  margin-top: 0.3em;
+  margin-bottom: 0.7em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  white-space: normal;
+}
+
+/* Opisy submenu */
 .submenu span {
-  margin-right: 0.8em;
+  margin-right: 0.6em;
   color: #6a5d42;
-  max-width: 65%;
-  word-wrap: break-word;
+  max-width: 70%;
+  white-space: normal;
 }
 
 /* Linki submenu */
-.submenu a {
+.submenu a.submenu-link {
   color: #6a5d42;
   background: transparent;
-  padding: 0.2rem 0.4rem;
+  padding: 0.15rem 0.5rem;
   border-radius: 4px;
-  font-size: 0.97rem;
+  font-size: 0.95rem;
   white-space: nowrap;
   transition: background-color 0.2s ease;
 }
 
-.submenu a:hover,
-.submenu a:focus {
+.submenu a.submenu-link:hover,
+.submenu a.submenu-link:focus {
   background: #dfd1bb;
   outline: none;
 }
 
-/* Strona główna treści */
+/* Treść strony po prawej */
 .content-main {
+  flex: 1;
   padding: 2rem 2.5rem;
   font-size: 1.16rem;
   line-height: 1.7;
@@ -207,12 +209,12 @@ nav.top-menu > ul > li.has-submenu:focus-within > ul.submenu {
   box-shadow: 0 3px 10px rgba(120, 90, 40, 0.06);
   overflow-wrap: break-word;
   backdrop-filter: blur(2px);
-  min-width: 0;
+  background-color: rgba(255, 255, 245, 0.5);
   position: relative;
   z-index: 1;
-  background-color: rgba(255, 255, 245, 0.5);
 }
 
+/* Nagłówek contentu */
 .content-main h1 {
   text-align: center;
 }
@@ -250,36 +252,15 @@ footer {
   }
 }
 
-/* Responsywność dla małych ekranów */
-@media (max-width: 950px) {
-  .page-grid {
-    grid-template-columns: 1fr;
-    padding: 1rem;
-    gap: 1.2rem;
-  }
-  aside {
-    border-right: none;
-    border-bottom: 1px solid #d3c8b6;
-    border-radius: 8px 8px 0 0;
-    min-width: auto;
-    padding: 1rem 0.7rem;
-  }
-  .content-main {
-    padding: 1.2rem 0.5rem;
-    border-radius: 0 0 7px 7px;
-  }
-}
-
-/* --- Stylizacja landing page (jak w Twoim kodzie) --- */
+/* Stylizacja landing page */
 .landing-page {
   flex: 1;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 0;
   padding-bottom: 8rem;
-  background: rgba(255,255,255,0.0);
+  background: transparent;
   box-sizing: border-box;
 }
 
@@ -307,7 +288,6 @@ footer {
 .landing-text h1 {
   font-size: 2.4rem;
   margin-bottom: 0.5rem;
-  font-family: 'Special Elite', monospace, monospace;
   color: #4a3a24;
 }
 
@@ -338,26 +318,21 @@ footer {
   cursor: pointer;
 }
 
-/* Stylizacja przycisku en/pl */ 
-
+/* Stylizacja przycisku en/pl */
 .language-button {
-  position: fixed; /* aby przycisk był na stałe w prawym górnym rogu */
-  top: 35px;       /* odległość od góry strony */
-  right: 100px;     /* odległość od prawej strony */
-  z-index: 9999;   /* na wierzchu innych elementów */
-  
+  position: fixed;
+  top: 35px;
+  right: 100px;
+  z-index: 9999;
   font-family: 'Special Elite', monospace, monospace;
   font-size: 1rem;
   padding: 0.4rem 0.8rem;
-
   border: 2px solid #6a5d42;
   background-color: transparent;
   color: #6a5d42;
   border-radius: 6px;
-
   cursor: pointer;
   user-select: none;
-
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -366,6 +341,49 @@ footer {
   background-color: #6a5d42;
   color: white;
   outline: none;
+}
+
+/* Responsywność dla mniejszych ekranów */
+@media (max-width: 950px) {
+  .page-grid {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.2rem;
+  }
+  .side-menu {
+    width: 100%;
+    position: relative;
+    box-shadow: none;
+    border-radius: 0 0 7px 7px;
+  }
+  .side-menu ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .side-menu > ul > li {
+    display: inline-flex;
+  }
+  nav.side-menu > ul > li.has-submenu > ul.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(255, 255, 245, 0.96);
+    box-shadow: 0 6px 20px rgba(106, 93, 66, 0.07);
+    border-radius: 7px;
+    border: 1px solid #d3c8b6;
+    padding: 0.7rem 1rem;
+    min-width: 310px;
+    display: none;
+  }
+  nav.side-menu > ul > li.has-submenu:hover > ul.submenu,
+  nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
+    display: block;
+  }
+  .submenu {
+    padding-left: 0;
+    margin-left: 0;
+  }
 }
 
 /* Responsywność landing page */

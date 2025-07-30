@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="<%= lang === 'en' ? 'en' : 'pl' %>">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
 </head>
+
 <body>
   <%- include('partials/header') %>
 
@@ -15,76 +17,92 @@
     <%= lang === 'pl' ? 'EN' : 'PL' %>
   </button>
 
-  <!-- Menu poziome wyśrodkowane -->
-  <nav class="top-menu">
-  <ul>
-    <li><a href="/o-mnie"><%= lang === 'pl' ? 'O mnie' : 'About me' %></a></li>
-
-    <li class="has-submenu">
-      <span class="menu-label" tabindex="0" role="button"><%= lang === 'pl' ? 'Materiały' : 'Materials' %></span>
-      <ul class="submenu">
-        <% if(lang === 'pl') { %>
-          <li>
-            <span>Worldbuilding – opowieść o świecie</span>
-            <a href="/materialy/worldbuilding">Zobacz więcej</a>
-          </li>
-          <li>
-            <span>Sylwetki bohaterów</span>
-            <a href="/materialy/characters">Zobacz więcej</a>
-          </li>
-          <li>
-            <span>Scena otwierająca/dialog</span>
-            <a href="/materialy/opening-scene">Zobacz więcej</a>
-          </li>
-          <li>
-            <span>Krótka fabuła</span>
-            <a href="/materialy/short-story">Zobacz więcej</a>
-          </li>
-          <li>
-            <span>Sesja RPG</span>
-            <a href="/materialy/rpg-session">Zobacz więcej</a>
-          </li>
-          <li>
-            <span>Gra Twine</span>
-            <a href="/materialy/twine-game">Zobacz więcej</a>
-          </li>
-        <% } else { %>
-          <li>
-            <span>Worldbuilding</span>
-            <a href="/materialy/worldbuilding">See more</a>
-          </li>
-          <li>
-            <span>Character Sketches</span>
-            <a href="/materialy/characters">See more</a>
-          </li>
-          <li>
-            <span>Opening Scene/dialog</span>
-            <a href="/materialy/opening-scene">See more</a>
-          </li>
-          <li>
-            <span>Short Story</span>
-            <a href="/materialy/short-story">See more</a>
-          </li>
-          <li>
-            <span>RPG Session</span>
-            <a href="/materialy/rpg-session">See more</a>
-          </li>
-          <li>
-            <span>Twine Game</span>
-            <a href="/materialy/twine-game">See more</a>
-          </li>
-        <% } %>
-      </ul>
-    </li>
-
-    <li><a href="/kontakt"><%= lang === 'pl' ? 'Kontakt' : 'Contact' %></a></li>
-  </ul>
-</nav>
-
-
   <main class="page-grid">
+    <nav class="side-menu">
+      <ul>
+        <li><a href="/o-mnie" class="menu-link">
+          <%= lang === 'pl' ? 'O mnie' : 'About me' %>
+        </a></li>
+
+        <li class="has-submenu">
+          <span class="menu-label" tabindex="0" role="button">
+            <%= lang === 'pl' ? 'Materiały' : 'Materials' %>
+          </span>
+          <ul class="submenu">
+            <% if (lang === 'pl') { %>
+              <li class="submenu-item">
+                <a href="/materialy/worldbuilding" class="submenu-link">
+                  <span>Worldbuilding</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/characters" class="submenu-link">
+                  <span>Sylwetki bohaterów</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/opening-scene" class="submenu-link">
+                  <span>Scena otwierająca/dialog</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/short-story" class="submenu-link">
+                  <span>Krótka fabuła</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/rpg-session" class="submenu-link">
+                  <span>Sesja RPG</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/twine-game" class="submenu-link">
+                  <span>Gra Twine</span>
+                </a>
+              </li>
+            <% } else { %>
+              <li class="submenu-item">
+                <a href="/materialy/worldbuilding" class="submenu-link">
+                  <span>Worldbuilding</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/characters" class="submenu-link">
+                  <span>Character Sketches</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/opening-scene" class="submenu-link">
+                  <span>Opening Scene/dialog</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/short-story" class="submenu-link">
+                  <span>Short Story</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/rpg-session" class="submenu-link">
+                  <span>RPG Session</span>
+                </a>
+              </li>
+              <li class="submenu-item">
+                <a href="/materialy/twine-game" class="submenu-link">
+                  <span>Twine Game</span>
+                </a>
+              </li>
+            <% } %>
+          </ul>
+        </li>
+
+        <li><a href="/kontakt" class="menu-link">
+          <%= lang === 'pl' ? 'Kontakt' : 'Contact' %>
+        </a></li>
+      </ul>
+    </nav>
+
     <section class="content-main">
-      <% if(lang === 'pl') { %>
+      <% if (lang === 'pl') { %>
         <h1>Witamy na stronie Huberta Kniazia!</h1>
         <p>
           "Ale muszę Ci wyjaśnić, jak powstał ten błędny pogląd potępiania rozkoszy oraz wychwalania bólu...
@@ -128,4 +146,5 @@
     }
   </script>
 </body>
+
 </html>
