@@ -239,7 +239,7 @@ footer {
 /* Animacja kursora */
 .caret-cursor {
   position: relative;
-  right: -0.4em;
+  right: -0.2em;
   animation: blink-caret 2.2s steps(2, start) infinite;
   display: inline-block;
   vertical-align: middle;
