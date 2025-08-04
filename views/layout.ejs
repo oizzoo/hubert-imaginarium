@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="<%= lang === 'en' ? 'en' : 'pl' %>">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="page-grid" role="main">
+    <% const langPrefix=lang==='en' ? '/en-' : '/' ; %>
+
+    <nav class="side-menu" aria-label="<%= lang === 'pl' ? 'Główne menu' : 'Main menu' %>">
+      <ul>
+        <li>
+          <a href="<%= langPrefix + 'o-mnie' %>" class="menu-link" tabindex="0">
+            <%= lang==='pl' ? 'O mnie' : 'About me' %>
+          </a>
+        </li>
+
+        <li class="has-submenu" aria-haspopup="true">
+          <span class="menu-label" tabindex="0" role="button">
+            <%= lang==='pl' ? 'Materiały' : 'Materials' %>
+          </span>
+          <ul class="submenu" aria-label="<%= lang === 'pl' ? 'Materiały submenu' : 'Materials submenu' %>">
+            <% 
+              const submenuPaths=[ 'worldbuilding' , 'characters' , 'opening-scene' , 'short-story' , 'rpg-session', 'twine-game' ]; 
+              const submenuTexts=lang==='pl' ? 
+                [ 'Worldbuilding' , 'Sylwetki bohaterów', 'Scena otwierająca/dialog' , 'Krótka fabuła' , 'Sesja RPG' , 'Gra Twine' ] : 
+                [ 'Worldbuilding', 'Character Sketches', 'Opening Scene/dialog' , 'Short Story' , 'RPG Session' , 'Twine Game' ]; 
+            %>
+
+            <% submenuPaths.forEach((path, i)=> { %>
+              <li class="submenu-item">
+                <a href="<%= langPrefix + 'materialy/' + path %>" class="submenu-link" tabindex="0">
+                  <span><%= submenuTexts[i] %></span>
+                </a>
+              </li>
+            <% }) %>
+          </ul>
+        </li>
+
+        <li>
+          <a href="<%= langPrefix + 'kontakt' %>" class="menu-link" tabindex="0">
+            <%= lang==='pl' ? 'Kontakt' : 'Contact' %>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="content-main">
+        <div class="content-text">
+             <%- include(body) %>
+        </div>
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script src="/js/language-switcher.js"></script>
+</body>
+</html>

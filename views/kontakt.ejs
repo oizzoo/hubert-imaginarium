@@ -1,227 +1,56 @@
-<!DOCTYPE html>
-<html lang="<%= lang === 'en' ? 'en' : 'pl' %>">
+<!-- W kontakt.ejs tylko to, co w sekcji content-main -->
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title><%= lang === 'pl' ? 'Kontakt - Hubert Kniaź' : 'Contact - Hubert Kniaź' %></title>
+<% if (lang === 'pl') { %>
+  <h1>Kontakt</h1>
+  <p>Masz pytania, uwagi, sugestie, inspiracje?
 
-  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+Czekam na kontakt, jestem otwartym na współpracę lub dyskusję.
+</p>
 
-  <!-- reCAPTCHA API -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-</head>
+  <ul>
+    <li>
+      <strong>LinkedIn:</strong>
+      <a href="https://www.linkedin.com/in/przykladowy-profil" target="_blank" rel="noopener noreferrer" tabindex="0">
+        https://www.linkedin.com/in/przykladowy-profil
+      </a>
+    </li>
+    <li>
+      <strong>Telefon:</strong> <a href="tel:+48123456789" tabindex="0">+48 123 456 789</a>
+    </li>
+  </ul>
 
-<body>
-  <%- include('partials/header') %>
-
-  <!-- PRZYCISK ZMIANY JĘZYKA -->
-  <button id="language-toggle" type="button" class="language-button" aria-label="Przełącz język">
-    <%= lang === 'pl' ? 'EN' : 'PL' %>
+  <button id="contact-btn" class="landing-cta" type="button" aria-haspopup="dialog"
+    aria-controls="contact-modal" aria-expanded="false">
+    Skontaktuj się ze mną
   </button>
 
-  <main class="page-contact">
-    <section class="content-main">
+<% } else { %>
 
-      <% if (lang === 'pl') { %>
-        <h1>Kontakt</h1>
-        <p>Masz pytania? Skontaktuj się ze mną:</p>
+  <h1>Contact</h1>
+  <p>Any questions? Get in touch:</p>
 
-        <ul>
-          <li>
-            <strong>LinkedIn:</strong>
-            <a href="https://www.linkedin.com/in/przykladowy-profil" target="_blank" rel="noopener noreferrer" tabindex="0">
-              https://www.linkedin.com/in/przykladowy-profil
-            </a>
-          </li>
-          <li>
-            <strong>Telefon:</strong> <a href="tel:+48123456789" tabindex="0">+48 123 456 789</a>
-          </li>
-        </ul>
-
-        <button id="contact-btn" class="landing-cta" type="button" aria-haspopup="dialog"
-          aria-controls="contact-modal" aria-expanded="false">
-          Skontaktuj się ze mną
-        </button>
-
-      <% } else { %>
-
-        <h1>Contact</h1>
-        <p>Any questions? Get in touch:</p>
-
-        <ul>
-          <li>
-            <strong>LinkedIn:</strong>
-            <a href="https://www.linkedin.com/in/sample-profile" target="_blank" rel="noopener noreferrer" tabindex="0">
-              https://www.linkedin.com/in/sample-profile
-            </a>
-          </li>
-          <li>
-            <strong>Phone:</strong> <a href="tel:+48123456789" tabindex="0">+48 123 456 789</a>
-          </li>
-        </ul>
-
-        <button id="contact-btn" class="landing-cta" type="button" aria-haspopup="dialog"
-          aria-controls="contact-modal" aria-expanded="false">
-          Contact me
-        </button>
-
-      <% } %>
-
-      <a href="<%= lang === 'pl' ? '/main' : '/en-main' %>" class="back-link">
-        <%= lang === 'pl' ? 'Wróć na stronę główną' : 'Go back to main page' %>
+  <ul>
+    <li>
+      <strong>LinkedIn:</strong>
+      <a href="https://www.linkedin.com/in/sample-profile" target="_blank" rel="noopener noreferrer" tabindex="0">
+        https://www.linkedin.com/in/sample-profile
       </a>
-    </section>
-  </main>
+    </li>
+    <li>
+      <strong>Phone:</strong> <a href="tel:+48123456789" tabindex="0">+48 123 456 789</a>
+    </li>
+  </ul>
 
-  <!-- Modal -->
-  <div id="contact-modal" class="modal-overlay" aria-hidden="<%= error || success ? 'false' : 'true' %>" role="dialog" aria-modal="true"
-    aria-labelledby="modal-title" style="display: <%= error || success ? 'flex' : 'none' %>;">
-    <div class="modal-content">
-      <button id="modal-close" class="modal-close-btn" aria-label="<%= lang === 'pl' ? 'Zamknij formularz' : 'Close form' %>">&times;</button>
-      <h2 id="modal-title"><%= lang === 'pl' ? 'Formularz kontaktowy' : 'Contact form' %></h2>
+  <button id="contact-btn" class="landing-cta" type="button" aria-haspopup="dialog"
+    aria-controls="contact-modal" aria-expanded="false">
+    Contact me
+  </button>
 
-      <% if (success) { %>
-        <div class="modal-message success" role="status" aria-live="polite">
-          <%= lang === 'pl' ? 'Dziękujemy za wiadomość!' : 'Thank you for your message!' %>
-        </div>
-      <% } else if (error) { %>
-        <div class="modal-message error" role="alert" aria-live="assertive">
-          <%= error %>
-        </div>
-      <% } %>
+<% } %>
 
-      <form id="contact-form" action="<%= lang === 'pl' ? '/kontakt' : '/en-kontakt' %>" method="POST" novalidate>
+<script>
+  window.modalInitialSuccess = <%= success ? 'true' : 'false' %>;
+</script>
+<script src="/js/modal.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-        <label for="email"><%= lang === 'pl' ? 'Twój email:' : 'Your email:' %></label>
-        <input type="email" id="email" name="email" required placeholder="<%= lang === 'pl' ? 'wpisz swój adres email' : 'enter your email address' %>"
-          value="<%= typeof oldInput !== 'undefined' && oldInput.email ? oldInput.email : '' %>" />
-
-        <label for="message"><%= lang === 'pl' ? 'Wiadomość:' : 'Message:' %></label>
-        <textarea id="message" name="message" rows="6" required placeholder="<%= lang === 'pl' ? 'napisz swoją wiadomość' : 'write your message' %>"><%= typeof oldInput !== 'undefined' && oldInput.message ? oldInput.message : '' %></textarea>
-
-        <!-- Honeypot field (hidden) -->
-        <label style="display:none;">
-          <%= lang === 'pl' ? 'Jeśli jesteś człowiekiem, zostaw to pole puste:' : 'If you are human, leave this field empty:' %>
-          <input type="text" name="website" autocomplete="off" tabindex="-1" />
-        </label>
-
-        <!-- Google reCAPTCHA widget -->
-        <div class="g-recaptcha" data-sitekey="6LfujJQrAAAAAO33_GcGcfAX8r1hn208jgmMRgbp" style="margin-top: 1rem;"></div>
-
-        <button type="submit" class="landing-cta" style="margin-top: 1.5rem; width: 100%;">
-          <%= lang === 'pl' ? 'Wyślij wiadomość' : 'Send Message' %>
-        </button>
-
-      </form>
-    </div>
-  </div>
-
-  <%- include('partials/footer') %>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal = document.getElementById('contact-modal');
-      const contactBtn = document.getElementById('contact-btn');
-      const modalCloseBtn = document.getElementById('modal-close');
-      const contactForm = document.getElementById('contact-form');
-      const contentMain = document.querySelector('.content-main');
-      const header = document.querySelector('header');
-      const footer = document.querySelector('footer');
-
-      function openModal() {
-        if (!modal || !contactBtn || !contentMain) return;
-        modal.style.display = 'flex';
-        modal.setAttribute('aria-hidden', 'false');
-        contactBtn.setAttribute('aria-expanded', 'true');
-        if (contactForm) contactForm.reset();
-        document.getElementById('email').focus();
-        document.body.style.overflow = 'hidden';
-
-        // Ukryj główną zawartość oraz header i footer
-        contentMain.style.display = 'none';
-        if (header) header.style.display = 'none';
-        if (footer) footer.style.display = 'none';
-      }
-
-      function closeModal() {
-        if (!modal || !contactBtn || !contentMain) return;
-        modal.style.display = 'none';
-        modal.setAttribute('aria-hidden', 'true');
-        contactBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-
-        // Przywróć widoczność elementów
-        contentMain.style.display = '';
-        if (header) header.style.display = '';
-        if (footer) footer.style.display = '';
-
-        contactBtn.focus();
-        if (contactForm) contactForm.reset();
-      }
-
-      if (contactBtn) {
-        contactBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', e => {
-          if (e.target === modal) {
-            closeModal();
-          }
-        });
-      }
-
-      // Obsługa przycisku zmiany języka EN/PL
-      const languageToggle = document.getElementById('language-toggle');
-      if (languageToggle) {
-        function updateButtonText() {
-          const path = window.location.pathname.replace(/\/$/, "");
-          if (path === '/en-kontakt') {
-            languageToggle.textContent = 'PL';
-          } else if (path === '/kontakt') {
-            languageToggle.textContent = 'EN';
-          } else {
-            languageToggle.textContent = 'EN';
-          }
-        }
-        updateButtonText();
-        languageToggle.addEventListener('click', () => {
-          const path = window.location.pathname.replace(/\/$/, "");
-          if (path === '/en-kontakt') {
-            window.location.pathname = '/kontakt';
-          } else if (path === '/kontakt') {
-            window.location.pathname = '/en-kontakt';
-          } else {
-            window.location.pathname = '/kontakt';
-          }
-        });
-      }
-
-      // Automatyczne zamknięcie modala po sukcesie po 2 sekundach
-      const isSuccess = <%= success ? 'true' : 'false' %>;
-
-      if (isSuccess && modal && contentMain && contactBtn) {
-        modal.style.display = 'flex';
-        modal.setAttribute('aria-hidden', 'false');
-        contactBtn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-
-        // Ukryj zawartość strony, gdy modal pokazuje się po sukcesie
-        contentMain.style.display = 'none';
-        if (header) header.style.display = 'none';
-        if (footer) footer.style.display = 'none';
-
-        setTimeout(() => {
-          closeModal();
-        }, 2000);
-      }
-    });
-  </script>
-
-</body>
-
-</html>

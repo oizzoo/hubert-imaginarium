@@ -91,14 +91,14 @@ h2 {
 }
 
 /* Pozycje menu */
-.side-menu>ul>li {
+.side-menu > ul > li {
   position: relative;
   display: block;
   white-space: normal;
 }
 
 /* Pozycja z submenu */
-.side-menu>ul>li.has-submenu {
+.side-menu > ul > li.has-submenu {
   position: relative;
 }
 
@@ -120,7 +120,7 @@ h2 {
 }
 
 /* Styl nagłówków submenu jako span.menu-label */
-.side-menu>ul>li.has-submenu>span.menu-label {
+.side-menu > ul > li.has-submenu > span.menu-label {
   display: block;
   padding: 0.5rem 1rem;
   font-size: 1.22rem;
@@ -130,21 +130,21 @@ h2 {
   transition: background 0.16s ease-in-out;
 }
 
-.side-menu>ul>li.has-submenu>span.menu-label:hover,
-.side-menu>ul>li.has-submenu>span.menu-label:focus {
+.side-menu > ul > li.has-submenu > span.menu-label:hover,
+.side-menu > ul > li.has-submenu > span.menu-label:focus {
   background: #eee7dc;
   outline: none;
 }
 
 /* Ukrycie submenu - domyślnie */
-nav.side-menu>ul>li.has-submenu>ul.submenu {
+nav.side-menu > ul > li.has-submenu > ul.submenu {
   display: none;
   margin-left: 1rem;
 }
 
 /* Pokazanie submenu na hover/focus */
-nav.side-menu>ul>li.has-submenu:hover>ul.submenu,
-nav.side-menu>ul>li.has-submenu:focus-within>ul.submenu {
+nav.side-menu > ul > li.has-submenu:hover > ul.submenu,
+nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
   display: block;
   position: relative;
   top: 0;
@@ -205,7 +205,7 @@ nav.side-menu>ul>li.has-submenu:focus-within>ul.submenu {
 /* Treść strony po prawej */
 .content-main {
   flex: 1;
-  padding: 2rem 2.5rem;
+  padding: 2rem 0; /* usuń padding boczny, zostaw tylko góra i dół */
   font-size: 1.16rem;
   line-height: 1.7;
   border-radius: 7px;
@@ -217,10 +217,17 @@ nav.side-menu>ul>li.has-submenu:focus-within>ul.submenu {
   z-index: 1;
 }
 
-/* Nagłówek contentu */
+/* Kontener tekstu w content-main przesunięty lekko w lewo */
+.content-text {
+  margin-left: -220px; /* dopasuj tę wartość do swojego widoku */
+}
+
+/* Opcjonalnie jeśli chcesz wycentrować nagłówki */
 .content-main h1 {
   text-align: center;
 }
+
+
 
 /* Stopka */
 footer {
@@ -247,7 +254,6 @@ footer {
 }
 
 @keyframes blink-caret {
-
   0%,
   50% {
     opacity: 1;
@@ -293,7 +299,7 @@ footer {
 }
 
 .landing-text h1 {
-  font-size: 2.4rem;
+  font-size: 2rem;
   margin-bottom: 0.5rem;
   color: #4a3a24;
 }
@@ -316,21 +322,32 @@ footer {
   box-shadow: 0 5px 12px rgba(106, 93, 66, 0.5);
   transition: background-color 0.3s ease;
   user-select: none;
+
+  width: 220px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .landing-cta:hover,
 .landing-cta:focus {
   background: #4a3a24;
   outline: none;
-  cursor: pointer;
 }
 
-/* Stylizacja przycisku en/pl */
-.language-button {
+/* Kontener dwóch przycisków językowych */
+#language-switcher {
   position: fixed;
   top: 35px;
   right: 100px;
   z-index: 9999;
+  display: flex;
+  gap: 0.6rem;
+  user-select: none;
+}
+
+/* Styl przycisków językowych */
+.language-button {
   font-family: 'Special Elite', monospace, monospace;
   font-size: 1rem;
   padding: 0.4rem 0.8rem;
@@ -339,8 +356,8 @@ footer {
   color: #6a5d42;
   border-radius: 6px;
   cursor: pointer;
-  user-select: none;
   transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
 }
 
 .language-button:hover,
@@ -348,6 +365,14 @@ footer {
   background-color: #6a5d42;
   color: white;
   outline: none;
+}
+
+.language-button:disabled {
+  background-color: #6a5d42;
+  color: white;
+  cursor: default;
+  opacity: 1;
+  box-shadow: 0 0 5px 1px #a5946a;
 }
 
 /* Responsywność dla mniejszych ekranów */
@@ -371,11 +396,11 @@ footer {
     gap: 1.5rem;
   }
 
-  .side-menu>ul>li {
+  .side-menu > ul > li {
     display: inline-flex;
   }
 
-  nav.side-menu>ul>li.has-submenu>ul.submenu {
+  nav.side-menu > ul > li.has-submenu > ul.submenu {
     position: absolute;
     top: 100%;
     left: 0;
@@ -388,8 +413,8 @@ footer {
     display: none;
   }
 
-  nav.side-menu>ul>li.has-submenu:hover>ul.submenu,
-  nav.side-menu>ul>li.has-submenu:focus-within>ul.submenu {
+  nav.side-menu > ul > li.has-submenu:hover > ul.submenu,
+  nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
     display: block;
   }
 
@@ -496,62 +521,4 @@ footer {
   user-select: none;
   margin-top: 1.5rem;
   display: inline-block;
-}
-
-
-/* Modal - nakładka */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-/* Modal - zawartość */
-.modal-content {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 10px;
-  width: 90%;
-  max-width: 500px;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-}
-
-/* Przycisk zamykający (X) */
-.modal-close-btn {
-  position: absolute;
-  top: 0.8rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  color: #333;
-}
-
-/* Styl inputów i textarea w formularzu */
-#contact-form input[type="email"],
-#contact-form textarea {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: 'Special Elite', monospace;
-  font-size: 1rem;
-  resize: vertical;
-  box-sizing: border-box;
-}
-
-#contact-form label {
-  font-weight: bold;
-  margin-top: 0.6rem;
-  display: block;
 }

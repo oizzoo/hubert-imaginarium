@@ -1,9 +1,7 @@
 import express from "express";
 import path from "path";
-import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
-import fetch from "node-fetch"; // do weryfikacji recaptcha
 
 // Załaduj zmienne środowiskowe z .env
 dotenv.config();
@@ -35,179 +33,60 @@ app.get("/en", (req, res) => {
   res.render("landing-page", { lang: "en" });
 });
 
-app.get("/main", (req, res) => {
-  res.render("index", { lang: "pl" });
-});
-
-app.get("/en-main", (req, res) => {
-  res.render("index", { lang: "en" });
-});
-
-app.get("/o-mnie", (req, res) => {
-  res.render("o-mnie", { lang: "pl" });
-});
-
-app.get("/en-o-mnie", (req, res) => {
-  res.render("o-mnie", { lang: "en" });
-});
-
-app.get("/kontakt", (req, res) => {
-  res.render("kontakt", { lang: "pl", success: null, error: null, oldInput: {} });
-});
-
-app.get("/en-kontakt", (req, res) => {
-  res.render("kontakt", { lang: "en", success: null, error: null, oldInput: {} });
-});
-
-// --- KONFIGURACJA nodemailer ---
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER, // Twój email w .env
-    pass: process.env.EMAIL_PASS, // Twoje hasło lub app password w .env
-  },
-  logger: true,
-  debug: true,
-});
-
-// --- Google reCAPTCHA ---
-// Tajny klucz do weryfikacji tokenu (Secret Key)
-async function verifyRecaptcha(token) {
-  const secretKey = process.env.RECAPTCHA_SECRET;
-
-  if (!token) return false;
-
-  const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `secret=${secretKey}&response=${token}`, // token z formularza, weryfikacja u Google
+app.get('/main', (req, res) => {
+  res.render('layout', { 
+    title: 'Hubert Kniaź Imaginarium', 
+    lang: 'pl', 
+    body: 'index'  // nazwa pliku z widokiem
   });
-
-  const data = await response.json();
-  return data.success === true;
-}
-
-// Obsługa POST - wysyłka maili kontaktowych (PL)
-app.post("/kontakt", async (req, res) => {
-  const { email, message, website, "g-recaptcha-response": recaptchaToken } = req.body;
-
-  // Pole honeypot - jeśli jest wypełnione, to bot (odrzucamy)
-  if (website && website.trim() !== "") {
-    return res.render("kontakt", {
-      lang: "pl",
-      success: false,
-      error: "Wykryto podejrzaną próbę wysłania wiadomości.",
-      oldInput: { email, message },
-    });
-  }
-
-  // Weryfikacja reCAPTCHA za pomocą wcześniej napisanej funkcji  
-  const isHuman = await verifyRecaptcha(recaptchaToken);
-  if (!isHuman) {
-    return res.render("kontakt", {
-      lang: "pl",
-      success: false,
-      error: "Proszę potwierdzić, że nie jesteś robotem.",
-      oldInput: { email, message },
-    });
-  }
-
-  // Podstawowa walidacja na backendzie
-  if (!email || !message) {
-    return res.render("kontakt", {
-      lang: "pl",
-      success: false,
-      error: "Proszę wypełnić wszystkie pola.",
-      oldInput: { email, message },
-    });
-  }
-
-  try {
-    const info = await transporter.sendMail({
-      from: `"Formularz kontaktowy" <${email}>`,
-      to: process.env.EMAIL_USER,
-      subject: "Nowa wiadomość ze strony kontaktowej",
-      text: `Wiadomość od: ${email}\n\n${message}`,
-      replyTo: email,
-    });
-
-    console.log("Wiadomość wysłana. ID:", info.messageId);
-
-    return res.render("kontakt", {
-      lang: "pl",
-      success: true,
-      error: null,
-      oldInput: {},
-    });
-  } catch (error) {
-    console.error("Błąd wysyłki maila:", error);
-    return res.render("kontakt", {
-      lang: "pl",
-      success: false,
-      error: "Wystąpił błąd podczas wysyłania wiadomości.",
-      oldInput: { email, message },
-    });
-  }
 });
 
-// Analogiczna obsługa POST dla wersji angielskiej
-app.post("/en-kontakt", async (req, res) => {
-  const { email, message, website, "g-recaptcha-response": recaptchaToken } = req.body;
+app.get('/o-mnie', (req, res) => {
+  res.render('layout', { 
+    title: 'O mnie', 
+    lang: 'pl', 
+    body: 'o-mnie' 
+  });
+});
 
-  if (website && website.trim() !== "") {
-    return res.render("kontakt", {
-      lang: "en",
-      success: false,
-      error: "Suspicious submission detected.",
-      oldInput: { email, message },
-    });
-  }
+app.get('/en-main', (req, res) => {
+  res.render('layout', { 
+    title: 'Hubert Kniaź Imaginarium', 
+    lang: 'en', 
+    body: 'index' 
+  });
+});
 
-  const isHuman = await verifyRecaptcha(recaptchaToken);
-  if (!isHuman) {
-    return res.render("kontakt", {
-      lang: "en",
-      success: false,
-      error: "Please confirm you are not a robot.",
-      oldInput: { email, message },
-    });
-  }
+app.get('/en-o-mnie', (req, res) => {
+  res.render('layout', { 
+    title: 'About me', 
+    lang: 'en', 
+    body: 'o-mnie' 
+  });
+});
 
-  if (!email || !message) {
-    return res.render("kontakt", {
-      lang: "en",
-      success: false,
-      error: "Please fill in all fields.",
-      oldInput: { email, message },
-    });
-  }
+// GET kontakt (polski)
+app.get("/kontakt", (req, res) => {
+  res.render("layout", { 
+    lang: "pl", 
+    title: "Kontakt - Hubert Kniaź", 
+    body: "kontakt", 
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  });
+});
 
-  try {
-    const info = await transporter.sendMail({
-      from: `"Contact form" <${email}>`,
-      to: process.env.EMAIL_USER,
-      subject: "New message from contact form",
-      text: `Message from: ${email}\n\n${message}`,
-      replyTo: email,
-    });
-
-    console.log("Email sent. ID:", info.messageId);
-
-    return res.render("kontakt", {
-      lang: "en",
-      success: true,
-      error: null,
-      oldInput: {},
-    });
-  } catch (error) {
-    console.error("Error sending mail:", error);
-    return res.render("kontakt", {
-      lang: "en",
-      success: false,
-      error: "Error occurred while sending message.",
-      oldInput: { email, message },
-    });
-  }
+// GET kontakt (angielski)
+app.get("/en-kontakt", (req, res) => {
+  res.render("layout", { 
+    lang: "en", 
+    title: "Contact - Hubert Kniaź", 
+    body: "kontakt", 
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  });
 });
 
 // 404 dla innych ścieżek - opcjonalnie
