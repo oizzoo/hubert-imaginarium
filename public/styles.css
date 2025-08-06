@@ -50,6 +50,10 @@ h2 {
   margin-top: 0;
 }
 
+.contact-h1 {
+  font-size: 3rem;
+}
+
 /* Maszynowa czcionka */
 .machine-font {
   font-size: 1.8rem;
@@ -217,14 +221,47 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
   z-index: 1;
 }
 
-/* Kontener tekstu w content-main przesunięty lekko w lewo */
-.content-text {
-  margin-left: -220px; /* dopasuj tę wartość do swojego widoku */
+
+.intro-section {
+  margin-top: 75px;
+  background: rgba(240, 240, 240, 0.3);
+  border-radius: 12px;
 }
 
-/* Opcjonalnie jeśli chcesz wycentrować nagłówki */
-.content-main h1 {
-  text-align: center;
+.highlight-text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.highlight-text br {
+  line-height: 1.8;
+}
+
+.normal-text {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+.cta-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 40px;
+}
+
+.cta-link {
+  color: #1777ff;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.cta-link:hover {
+  border-bottom-color: #1777ff;
 }
 
 

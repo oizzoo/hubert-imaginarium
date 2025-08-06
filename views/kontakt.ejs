@@ -1,7 +1,7 @@
 <!-- W kontakt.ejs tylko to, co w sekcji content-main -->
 
 <% if (lang === 'pl') { %>
-  <h1>Kontakt</h1>
+  <h1 class="contact-h1">Kontakt</h1>
   <p>Masz pytania, uwagi, sugestie, inspiracje?
 
 Czekam na kontakt, jestem otwartym na współpracę lub dyskusję.
@@ -10,42 +10,36 @@ Czekam na kontakt, jestem otwartym na współpracę lub dyskusję.
   <ul>
     <li>
       <strong>LinkedIn:</strong>
-      <a href="https://www.linkedin.com/in/przykladowy-profil" target="_blank" rel="noopener noreferrer" tabindex="0">
-        https://www.linkedin.com/in/przykladowy-profil
+      <a href="https://www.linkedin.com/in/hubert-kniaz" target="_blank" rel="noopener noreferrer">
+      https://www.linkedin.com/in/hubert-kniaz
       </a>
     </li>
     <li>
-      <strong>Telefon:</strong> <a href="tel:+48123456789" tabindex="0">+48 123 456 789</a>
+      <strong>Mail:</strong>
+        hubert.j.kniaz@gmail.com
     </li>
   </ul>
 
-  <button id="contact-btn" class="landing-cta" type="button" aria-haspopup="dialog"
-    aria-controls="contact-modal" aria-expanded="false">
-    Skontaktuj się ze mną
-  </button>
-
 <% } else { %>
 
-  <h1>Contact</h1>
-  <p>Any questions? Get in touch:</p>
+  <h1 class="contact-h1">Contact</h1>
+  <p>
+    Do you have questions, comments, suggestions, or inspiration?
+    I look forward to hearing from you; I'm open to collaboration or discussion.
+  </p>
 
   <ul>
     <li>
       <strong>LinkedIn:</strong>
-      <a href="https://www.linkedin.com/in/sample-profile" target="_blank" rel="noopener noreferrer" tabindex="0">
-        https://www.linkedin.com/in/sample-profile
+      <a href="https://www.linkedin.com/in/hubert-kniaz" target="_blank" rel="noopener noreferrer">
+        https://www.linkedin.com/in/hubert-kniaz
       </a>
     </li>
     <li>
-      <strong>Phone:</strong> <a href="tel:+48123456789" tabindex="0">+48 123 456 789</a>
+      <strong>Mail:</strong>
+        hubert.j.kniaz@gmail.com
     </li>
   </ul>
-
-  <button id="contact-btn" class="landing-cta" type="button" aria-haspopup="dialog"
-    aria-controls="contact-modal" aria-expanded="false">
-    Contact me
-  </button>
-
 <% } %>
 
 <script>
