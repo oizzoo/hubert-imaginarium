@@ -16,6 +16,11 @@
     <nav class="side-menu" aria-label="<%= lang === 'pl' ? 'Główne menu' : 'Main menu' %>">
       <ul>
         <li>
+          <a href="<%= langPrefix + 'main' %>" class="menu-link" tabindex="0">
+            <%= lang==='pl' ? 'Strona Główna' : 'Main page' %>
+          </a>
+        </li>
+        <li>
           <a href="<%= langPrefix + 'o-mnie' %>" class="menu-link" tabindex="0">
             <%= lang==='pl' ? 'O mnie' : 'About me' %>
           </a>

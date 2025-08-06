@@ -1,3 +1,7 @@
 <footer>
+  <% if (lang === 'pl') { %>
+  <p>&copy; <%= new Date().getFullYear() %> Hubert Kniaź. Strona stworzona przez Jakuba Stożka</p>
+  <% } else { %>
   <p>&copy; <%= new Date().getFullYear() %> Hubert Kniaź. Website created by Jakub Stożek</p>
+  <% } %>
 </footer>
