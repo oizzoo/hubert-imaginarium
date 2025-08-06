@@ -1,0 +1,62 @@
+<% const langPrefix = lang === 'en' ? '/en-' : '/'; %>
+<nav class="side-menu" aria-label="<%= lang === 'pl' ? 'Główne menu' : 'Main menu' %>">
+  <ul>
+    <li>
+      <a href="<%= langPrefix + 'main' %>" class="menu-link" tabindex="0">
+        <%= lang === 'pl' ? 'Strona Główna' : 'Main page' %>
+      </a>
+    </li>
+    <li>
+      <a href="<%= langPrefix + 'o-mnie' %>" class="menu-link" tabindex="0">
+        <%= lang === 'pl' ? 'O mnie' : 'About me' %>
+      </a>
+    </li>
+    <li class="has-submenu" aria-haspopup="true">
+      <span class="menu-label" tabindex="0" role="button">
+        <%= lang === 'pl' ? 'Materiały' : 'Materials' %>
+      </span>
+      <ul class="submenu" aria-label="<%= lang === 'pl' ? 'Materiały submenu' : 'Materials submenu' %>">
+        <li class="has-submenu" aria-haspopup="true">
+          <a href="<%= langPrefix + 'materialy/uniwersum-drugiej-ziemi' %>" class="submenu-link" tabindex="0">
+            <%= lang === 'pl' ? 'Uniwersum Drugiej Ziemi' : 'Second Earth Universe' %>
+          </a>
+          <ul class="submenu" aria-label="<%= lang === 'pl' ? 'Uniwersum Drugiej Ziemi submenu' : 'Second Earth Universe submenu' %>">
+            <% 
+              const secondEarthPaths = ['koncept-postaci', 'worldbuilding', 'gdd', 'intro-dialog-uml', 'quest'];
+              const secondEarthTexts = lang === 'pl' ? 
+                ['Koncept postaci', 'Worldbuilding', 'GDD', 'Intro + dialog + Diagram UML', 'Quest'] : 
+                ['Character Concept', 'Worldbuilding', 'GDD', 'Intro + Dialog + UML Diagram', 'Quest'];
+            %>
+            <% secondEarthPaths.forEach((path, i) => { %>
+              <li class="submenu-item">
+                <a href="<%= langPrefix + 'materialy/uniwersum-drugiej-ziemi/' + path %>" class="submenu-link" tabindex="0">
+                  <span><%= secondEarthTexts[i] %></span>
+                </a>
+              </li>
+            <% }) %>
+          </ul>
+        </li>
+        <li class="submenu-item">
+          <a href="<%= langPrefix + 'materialy/scenariusz-sesji-rpg' %>" class="submenu-link" tabindex="0">
+            <span><%= lang === 'pl' ? 'Scenariusz Sesji RPG' : 'RPG Session Script' %></span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="<%= langPrefix + 'materialy/opowiadanie' %>" class="submenu-link" tabindex="0">
+            <span><%= lang === 'pl' ? 'Opowiadanie' : 'Short Story' %></span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link disabled" tabindex="-1" aria-disabled="true">
+            <span><%= lang === 'pl' ? 'Gra Twine (w budowie)' : 'Twine Game (in progress)' %></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="<%= langPrefix + 'kontakt' %>" class="menu-link" tabindex="0">
+        <%= lang === 'pl' ? 'Kontakt' : 'Contact' %>
+      </a>
+    </li>
+  </ul>
+</nav>
