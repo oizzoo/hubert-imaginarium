@@ -496,7 +496,7 @@ footer {
 
 /* MEDIA QUERIES */
 
-@media (max-width: 1000px) and (max-height: 700px){
+@media (max-width: 3000px) and (max-height: 700px){
   /* Przycisk językowy - nie fixed, pod headerem i wycentrowany */
   #language-switcher {
     position: static !important;
@@ -606,6 +606,148 @@ footer {
 
 
 @media (max-width: 499px) and (max-height: 700px){
+  .landing-photo {
+    width: 25%;
+    height: auto;
+    max-width: 55px;
+    border-radius: 50%; 
+    object-fit: cover;
+  }
+
+    /* Landing content max-width */
+  .landing-content {
+    max-width: 75vw;
+  }
+
+  /* Teksty landing page mniejsze na małych ekranach */
+  .landing-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .landing-text p {
+    font-size: 0.5rem;
+  }
+
+  /* Landing CTA mniejszy rozmiar */
+  .landing-cta {
+    font-size: 0.5rem;
+    padding: 0.55rem 1.2rem;
+    width: auto;
+    min-width: 125px;
+  }
+}
+
+
+@media (max-width: 1000px) {
+  /* Przycisk językowy - nie fixed, pod headerem i wycentrowany */
+  #language-switcher {
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    margin: 1rem auto 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    z-index: auto;
+  }
+
+  /* Mniejsze przyciski językowe */
+  .language-button {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  /* Intro section - wyśrodkowany, max szerokość, padding */
+  .intro-section {
+    margin-top: 75px;
+    padding: 2rem;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 700px;
+  }
+
+  /* Landing photo responsywne */
+  .landing-photo {
+    width: 50%;
+    height: auto;
+    max-width: 100px;
+    border-radius: 50%; /* upewnij się, że jest zachowany kształt koła */
+    object-fit: cover;
+  }
+
+  /* Landing content max-width */
+  .landing-content {
+    max-width: 90vw;
+  }
+
+  /* Teksty landing page mniejsze na małych ekranach */
+  .landing-text h1 {
+    font-size: 2rem;
+  }
+
+  .landing-text p {
+    font-size: 1rem;
+  }
+
+  /* Landing CTA mniejszy rozmiar */
+  .landing-cta {
+    font-size: 1rem;
+    padding: 0.75rem 1.8rem;
+    width: auto;
+    min-width: 180px;
+  }
+
+  /* Menu boczne i układ możesz też lekko przeformatować (jeśli chcesz) */
+  .page-grid {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.2rem;
+  }
+
+  .side-menu {
+    width: 100%;
+    position: relative;
+    box-shadow: none;
+    border-radius: 0 0 7px 7px;
+    padding: 1rem 1.5rem; /* możesz dopasować */
+  }
+
+  .side-menu ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .side-menu > ul > li {
+    display: inline-flex;
+  }
+
+  nav.side-menu > ul > li.has-submenu > ul.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: rgba(255, 255, 245, 0.96);
+    box-shadow: 0 6px 20px rgba(106, 93, 66, 0.07);
+    border-radius: 7px;
+    border: 1px solid #d3c8b6;
+    padding: 0.7rem 1rem;
+    min-width: 310px;
+    display: none;
+  }
+
+  nav.side-menu > ul > li.has-submenu:hover > ul.submenu,
+  nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
+    display: block;
+  }
+
+  .submenu {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+
+
+@media (max-width: 499px){
   .landing-photo {
     width: 25%;
     height: auto;
