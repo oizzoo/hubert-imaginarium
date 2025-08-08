@@ -13,7 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     '/o-mnie': '/en-o-mnie',
     '/en-o-mnie': '/o-mnie',
     '/kontakt': '/en-kontakt',
-    '/en-kontakt': '/kontakt'
+    '/en-kontakt': '/kontakt',
+    '/materialy/uniwersum-drugiej-ziemi': '/en-materialy/uniwersum-drugiej-ziemi',
+    '/en-materialy/uniwersum-drugiej-ziemi': '/materialy/uniwersum-drugiej-ziemi',
+    '/materialy/uniwersum-drugiej-ziemi/koncept-postaci': '/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci',
+    '/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci': '/materialy/uniwersum-drugiej-ziemi/koncept-postaci',
   };
 
   btnPL.addEventListener('click', () => {

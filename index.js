@@ -41,19 +41,20 @@ app.get('/main', (req, res) => {
   });
 });
 
-app.get('/o-mnie', (req, res) => {
-  res.render('layout', { 
-    title: 'O mnie', 
-    lang: 'pl', 
-    body: 'o-mnie' 
-  });
-});
-
 app.get('/en-main', (req, res) => {
   res.render('layout', { 
     title: 'Hubert Kniaź Imaginarium', 
     lang: 'en', 
     body: 'index' 
+  });
+});
+
+
+app.get('/o-mnie', (req, res) => {
+  res.render('layout', { 
+    title: 'O mnie', 
+    lang: 'pl', 
+    body: 'o-mnie' 
   });
 });
 
@@ -87,6 +88,51 @@ app.get("/en-kontakt", (req, res) => {
     error: null, 
     oldInput: {} 
   });
+});
+
+app.get("/materialy/uniwersum-drugiej-ziemi", (req, res) => {
+  res.render("layout", {
+    lang: "pl",
+    title: "Uniwersum drugiej ziemi",
+    body: "uniwersum-drugiej-ziemi",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+
+app.get("/en-materialy/uniwersum-drugiej-ziemi", (req, res) => {
+  res.render("layout", {
+    lang: "en",
+    title: "Uniwersum drugiej ziemi",
+    body: "uniwersum-drugiej-ziemi",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/materialy/uniwersum-drugiej-ziemi/koncept-postaci", (req, res) => {
+  res.render("layout", {
+    lang: "pl",
+    title: "Koncept postaci",
+    body: "koncept-postaci",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci", (req, res) => {
+  res.render("layout", {
+    lang: "en",
+    title: "Koncept postaci",
+    body: "koncept-postaci",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
 });
 
 // 404 dla innych ścieżek - opcjonalnie
