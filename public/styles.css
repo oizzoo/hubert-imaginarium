@@ -156,7 +156,7 @@ nav.side-menu > ul > li.has-submenu > ul.submenu {
   border: none;
   box-shadow: none;
   padding: 0;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
 }
 
 /* Pokazanie submenu na hover/focus */
@@ -184,8 +184,8 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 /* Elementy submenu */
 .submenu li.submenu-item {
   padding-left: 0;
-  margin-top: 0.3em;
-  margin-bottom: 0.7em;
+  margin-top: 0.1em;
+  margin-bottom: 0.2em;
   display: block; /* Zmieniono na block, aby lepiej kontrolować wyrównanie */
   font-size: 1.05rem;
   white-space: normal;
@@ -203,7 +203,7 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 .submenu a.submenu-link {
   color: #6a5d42;
   background: transparent;
-  padding: 0.15rem 0.5rem;
+  padding: 0;
   border-radius: 4px;
   font-size: 0.95rem;
   white-space: normal; /* Pozwala na podział linii z <br> */
@@ -468,7 +468,6 @@ footer {
 /* PDF */
 
 #pdf-container {
-  border: 2px solid red;
   background-color: rgba(255, 255, 255, 0.9);
   height: 80vh;
   overflow-y: auto;

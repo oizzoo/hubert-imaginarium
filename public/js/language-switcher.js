@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '/en-materialy/uniwersum-drugiej-ziemi': '/materialy/uniwersum-drugiej-ziemi',
     '/materialy/uniwersum-drugiej-ziemi/koncept-postaci': '/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci',
     '/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci': '/materialy/uniwersum-drugiej-ziemi/koncept-postaci',
+    '/materialy/uniwersum-drugiej-ziemi/gdd': '/en-materialy/uniwersum-drugiej-ziemi/gdd',
   };
 
   btnPL.addEventListener('click', () => {

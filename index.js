@@ -135,6 +135,28 @@ app.get("/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci", (req, res) => {
   })
 });
 
+app.get("/materialy/uniwersum-drugiej-ziemi/gdd", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "pl",
+    title: "GDD",
+    body: "gdd",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/en-materialy/uniwersum-drugiej-ziemi/gdd", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "pl",
+    title: "GDD",
+    body: "gdd",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
 // 404 dla innych ścieżek - opcjonalnie
 app.use((req, res) => {
   res.status(404).send("404 - Nie znaleziono strony");

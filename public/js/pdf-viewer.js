@@ -1,34 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const url = '/pdf/Cara.pdf'; 
-  const canvas = document.getElementById('id-render');
-  const context = canvas.getContext('2d');
-
-  // Pobierz obiekt pdfjsLib z globalnego scope
   const pdfjsLib = window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
 
-  // Ustaw worker
-  pdfjsLib.GlobalWorkerOptions.workerSrc =
-    'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.worker.min.js';
+  const pdfContainer = document.getElementById('pdf-container');
 
-  // Załaduj dokument PDF
-  pdfjsLib.getDocument(url).promise.then(pdfDoc => {
-    // Pobierz pierwszą stronę
-    pdfDoc.getPage(1).then(page => {
-      const scale = 1.5;
-      const viewport = page.getViewport({ scale });
+  if (!pdfContainer) {
+    console.error('Brak kontenera #pdf-container');
+    return;
+  }
 
-      // Ustaw wielkość canvasa zgodnie z rozmiarem strony PDF
-      canvas.height = viewport.height;
-      canvas.width = viewport.width;
+  const url =
+    (window.PDF_URL) // 1. globalna zmienna
+    || pdfContainer.dataset.url // 2. atrybut data-url
+    || '/pdf/Cara.pdf'; // 3. domyślny fallback (tu może być problem, jeśli zawsze neutralny)
 
-      // Renderuj stronę na canvasie
-      const renderContext = {
-        canvasContext: context,
-        viewport: viewport,
-      };
-      page.render(renderContext);
+  renderPDF(url);
+
+  function renderPDF(url) {
+    pdfContainer.innerHTML = '';
+
+    pdfjsLib.getDocument(url).promise.then(pdfDoc => {
+      for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+        pdfDoc.getPage(pageNum).then(page => {
+          const scale = 1.5;
+          const viewport = page.getViewport({ scale });
+
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          canvas.style.display = 'block';
+          canvas.style.marginBottom = '10px';
+
+          pdfContainer.appendChild(canvas);
+
+          const renderContext = { canvasContext: context, viewport };
+          page.render(renderContext);
+        });
+      }
+    }).catch(error => {
+      console.error('Błąd ładowania PDF:', error);
     });
-  }).catch(error => {
-    console.error('Błąd ładowania lub renderowania PDF:', error);
-  });
+  }
 });
