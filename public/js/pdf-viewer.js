@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const url =
     (window.PDF_URL) // 1. globalna zmienna
     || pdfContainer.dataset.url // 2. atrybut data-url
-    || '/pdf/Cara.pdf'; // 3. domyślny fallback (tu może być problem, jeśli zawsze neutralny)
 
   renderPDF(url);
 
