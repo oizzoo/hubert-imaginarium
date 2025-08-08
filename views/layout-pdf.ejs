@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="<%= lang === 'en' ? 'en' : 'pl' %>">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><%= title %></title>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main class="page-grid" role="main">
+
+    <%- include('partials/side-menu', { lang: lang }) %>
+
+    <section class="content-main">
+
+             <%- include(body) %>
+
+    </section>
+  </main>
+
+  <%- include('partials/footer') %>
+  <script src="/js/language-switcher.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+  <script src="/js/pdf-viewer.js"></script>
+</body>
+</html>

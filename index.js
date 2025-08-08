@@ -114,7 +114,7 @@ app.get("/en-materialy/uniwersum-drugiej-ziemi", (req, res) => {
 });
 
 app.get("/materialy/uniwersum-drugiej-ziemi/koncept-postaci", (req, res) => {
-  res.render("layout", {
+  res.render("layout-pdf", {
     lang: "pl",
     title: "Koncept postaci",
     body: "koncept-postaci",
@@ -125,7 +125,7 @@ app.get("/materialy/uniwersum-drugiej-ziemi/koncept-postaci", (req, res) => {
 });
 
 app.get("/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci", (req, res) => {
-  res.render("layout", {
+  res.render("layout-pdf", {
     lang: "en",
     title: "Koncept postaci",
     body: "koncept-postaci",
