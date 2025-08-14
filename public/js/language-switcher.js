@@ -19,6 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     '/materialy/uniwersum-drugiej-ziemi/koncept-postaci': '/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci',
     '/en-materialy/uniwersum-drugiej-ziemi/koncept-postaci': '/materialy/uniwersum-drugiej-ziemi/koncept-postaci',
     '/materialy/uniwersum-drugiej-ziemi/gdd': '/en-materialy/uniwersum-drugiej-ziemi/gdd',
+    '/en-materialy/uniwersum-drugiej-ziemi/gdd': '/materialy/uniwersum-drugiej-ziemi/gdd',
+    '/materialy/uniwersum-drugiej-ziemi/Cara': '/en-materialy/uniwersum-drugiej-ziemi/Cara',
+    '/en-materialy/uniwersum-drugiej-ziemi/Cara': '/materialy/uniwersum-drugiej-ziemi/Cara',
+    '/materialy/uniwersum-drugiej-ziemi/William': '/en-materialy/uniwersum-drugiej-ziemi/William',
+    '/en-materialy/uniwersum-drugiej-ziemi/William': '/materialy/uniwersum-drugiej-ziemi/William',
+    '/materialy/uniwersum-drugiej-ziemi/quest': '/en-materialy/uniwersum-drugiej-ziemi/quest',
+    '/en-materialy/uniwersum-drugiej-ziemi/quest': '/materialy/uniwersum-drugiej-ziemi/quest',
+    '/materialy/opowiadanie': '/en-materialy/opowiadanie',
+    '/en-materialy/opowiadanie': '/materialy/opowiadanie',
   };
 
   btnPL.addEventListener('click', () => {

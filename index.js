@@ -148,9 +148,97 @@ app.get("/materialy/uniwersum-drugiej-ziemi/gdd", (req, res) => {
 
 app.get("/en-materialy/uniwersum-drugiej-ziemi/gdd", (req, res) => {
   res.render("layout-pdf", {
-    lang: "pl",
+    lang: "en",
     title: "GDD",
     body: "gdd",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/materialy/uniwersum-drugiej-ziemi/Cara", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "pl",
+    title: "Cara",
+    body: "Cara",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/en-materialy/uniwersum-drugiej-ziemi/Cara", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "en",
+    title: "Cara",
+    body: "Cara",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/materialy/uniwersum-drugiej-ziemi/William", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "pl",
+    title: "William",
+    body: "William",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/en-materialy/uniwersum-drugiej-ziemi/William", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "en",
+    title: "William",
+    body: "William",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/materialy/uniwersum-drugiej-ziemi/quest", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "pl",
+    title: "Quest",
+    body: "quest",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/en-materialy/uniwersum-drugiej-ziemi/quest", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "en",
+    title: "Quest",
+    body: "quest",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/materialy/opowiadanie", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "pl",
+    title: "Opowiadanie",
+    body: "opowiadanie",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/en-materialy/opowiadanie", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "en",
+    title: "Opowiadanie",
+    body: "opowiadanie",
     success: null, 
     error: null, 
     oldInput: {} 
