@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
+import { title } from "process";
 
 // Załaduj zmienne środowiskowe z .env
 dotenv.config();
@@ -157,50 +158,6 @@ app.get("/en-materialy/uniwersum-drugiej-ziemi/gdd", (req, res) => {
   })
 });
 
-app.get("/materialy/uniwersum-drugiej-ziemi/Cara", (req, res) => {
-  res.render("layout-pdf", {
-    lang: "pl",
-    title: "Cara",
-    body: "Cara",
-    success: null, 
-    error: null, 
-    oldInput: {} 
-  })
-});
-
-app.get("/en-materialy/uniwersum-drugiej-ziemi/Cara", (req, res) => {
-  res.render("layout-pdf", {
-    lang: "en",
-    title: "Cara",
-    body: "Cara",
-    success: null, 
-    error: null, 
-    oldInput: {} 
-  })
-});
-
-app.get("/materialy/uniwersum-drugiej-ziemi/William", (req, res) => {
-  res.render("layout-pdf", {
-    lang: "pl",
-    title: "William",
-    body: "William",
-    success: null, 
-    error: null, 
-    oldInput: {} 
-  })
-});
-
-app.get("/en-materialy/uniwersum-drugiej-ziemi/William", (req, res) => {
-  res.render("layout-pdf", {
-    lang: "en",
-    title: "William",
-    body: "William",
-    success: null, 
-    error: null, 
-    oldInput: {} 
-  })
-});
-
 app.get("/materialy/uniwersum-drugiej-ziemi/quest", (req, res) => {
   res.render("layout-pdf", {
     lang: "pl",
@@ -245,9 +202,45 @@ app.get("/en-materialy/opowiadanie", (req, res) => {
   })
 });
 
+app.get("/materialy/uniwersum-drugiej-ziemi/intro-dialog-uml", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "pl",
+    title: "Intro-dialog-uml",
+    body: "Intro-dialog-uml",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/en-materialy/uniwersum-drugiej-ziemi/intro-dialog-uml", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "en",
+    title: "Intro-dialog-uml",
+    body: "Intro-dialog-uml",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
 // 404 dla innych ścieżek - opcjonalnie
 app.use((req, res) => {
-  res.status(404).send("404 - Nie znaleziono strony");
+  const isEnglish = req.url.startsWith('/en');
+  
+  if(isEnglish) {
+    res.status(404).render('layout', {
+      title: 'Page not found',
+      lang: 'en',
+      body: 'work-in-progress'
+    });
+  } else {
+    res.status(404).render('layout', {
+      title: 'Strona nie znaleziona',
+      lang: 'pl',
+      body: 'work-in-progress'
+    });
+  }
 });
 
 // --- START SERVERA ---

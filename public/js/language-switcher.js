@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     '/en-materialy/uniwersum-drugiej-ziemi/quest': '/materialy/uniwersum-drugiej-ziemi/quest',
     '/materialy/opowiadanie': '/en-materialy/opowiadanie',
     '/en-materialy/opowiadanie': '/materialy/opowiadanie',
+    '/materialy/uniwersum-drugiej-ziemi/intro-dialog-uml': '/en-materialy/uniwersum-drugiej-ziemi/intro-dialog-uml',
+    '/en-materialy/uniwersum-drugiej-ziemi/intro-dialog-uml': '/materialy/uniwersum-drugiej-ziemi/intro-dialog-uml',
   };
 
   btnPL.addEventListener('click', () => {
