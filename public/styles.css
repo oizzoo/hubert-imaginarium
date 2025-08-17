@@ -22,7 +22,7 @@ body {
 
 body {
   background: url('/images/notebook-bg.jpg') center/cover no-repeat fixed;
-  min-height: 100vh;
+  min-height: auto;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -82,7 +82,7 @@ h2 {
   flex: 1;
   display: flex;
   padding: 2rem;
-  min-height: 0;
+  min-height: 20vh;
   gap: 0;
 }
 
@@ -249,7 +249,6 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 /* Treść strony po prawej */
 .content-main {
   flex: 1;
-  margin-top: 10;
   padding: 2rem 0;
   min-height: 0;
   font-size: 1.16rem;
@@ -503,7 +502,7 @@ footer {
 #language-switcher {
   position: fixed;
   top: 35px;
-  right: 100px;
+  right: 200px;
   z-index: 9999;
   display: flex;
   gap: 0.6rem;
