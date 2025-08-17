@@ -35,6 +35,10 @@
     font-size: 70%;
   }
 
+  .page-grid {
+    min-height: 0;
+  }
+
   header {
     display: flex;
     flex-direction: column;
@@ -67,10 +71,6 @@
 
   .landing-photo {
     max-width: 100px;
-  }
-
-  footer{
-    margin-top: 20px;
   }
 }
 
@@ -170,5 +170,10 @@
 
   .landing-photo {
     max-width: 80px;
+  }
+
+  footer {
+    position: sticky;
+    margin-top: 20px;
   }
 }
