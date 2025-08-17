@@ -20,6 +20,10 @@
   .side-right {
     width: 8rem;
   }
+
+  .landing-photo {
+    max-width: 130px;
+  }
 }
 
 /* TABLETS: 768px - 1024px */
@@ -28,6 +32,10 @@
     html {
         font-size: 65%;
     }
+
+    .landing-photo {
+    max-width: 100px;
+  }
 }
 
 /* PHONE LANDSCAPE: 576px - 768px */
@@ -52,6 +60,32 @@
 
   header > div:first-child {
     order: 1;
+  }
+
+  .landing-content {
+    max-width: 90%;
+    margin-top: 2rem;
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+
+  .landing-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .landing-text p {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .landing-cta {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .landing-photo {
+    max-width: 120px;
   }
 }
 
@@ -78,5 +112,9 @@
 
   header > div:first-child {
     order: 1;
+  }
+
+  .landing-photo {
+    max-width: 80px;
   }
 }

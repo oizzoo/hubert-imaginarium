@@ -432,6 +432,7 @@ footer {
   padding-bottom: 8rem;
   background: transparent;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .landing-content {
