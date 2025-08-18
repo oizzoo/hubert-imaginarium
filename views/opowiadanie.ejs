@@ -9,13 +9,21 @@
 <% } %> -->
 
 <% if (lang==='pl') { %>
-<h2>Opowiadanie:</h2>
-<div id="pdf-container" data-url="/pdf/Opowiadanie.pdf"></div>
-<a href="#" class="pdf-link open-pdf" data-pdf="/pdf/Opowiadanie.pdf">-Otwórz 📄-</a>
-<a href="https://drive.google.com/file/d/1gJTWQIM7i6-r8fwzvzY8WVOGEu9Zv4iJ/view?usp=sharing" target="_blank">Przejdź do Pliku PDF 📄</a>
+<div class="item-container"> 
+    <div class="item-card">
+        <h2>Opowiadanie</h2>
+        <img src="/images/opowiadanie.jpg" alt="opowiadanie" class="item-img"/>
+        <a href="#" class="pdf-link open-pdf" data-pdf="/pdf/Opowiadanie.pdf">Otwórz</a>
+        <a href="https://drive.google.com/file/d/1gJTWQIM7i6-r8fwzvzY8WVOGEu9Zv4iJ/view?usp=sharing" target="_blank">Otwórz PDF</a>
+    </div>
+</div>
 <% } else { %>
-<h2>Short story:</h2>
-<div id="pdf-container" data-url="/pdf/Opowiadanie.pdf"></div>
-<a href="#" class="pdf-link open-pdf" data-pdf="/pdf/Opowiadanie.pdf">-Open 📄-</a>
-<a href="https://drive.google.com/file/d/1gJTWQIM7i6-r8fwzvzY8WVOGEu9Zv4iJ/view?usp=sharing" target="_blank">Go to the PDF 📄</a>
+<div class="item-container"> 
+    <div class="item-card">
+        <h2>Short Story</h2>
+        <img src="/images/opowiadanie.jpg" alt="opowiadanie" class="item-img"/>
+        <a href="#" class="pdf-link open-pdf" data-pdf="/pdf/Opowiadanie.pdf">Open</a>
+        <a href="https://drive.google.com/file/d/1gJTWQIM7i6-r8fwzvzY8WVOGEu9Zv4iJ/view?usp=sharing" target="_blank">Open PDF</a>
+    </div>
+</div>
 <% } %>

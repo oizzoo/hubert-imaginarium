@@ -15,6 +15,7 @@ html {
   font-size: 100%;
   font-family: 'Special Elite', monospace, monospace;
   color: #4a3a24;
+  overflow-x: hidden;
 }
 
 body {
@@ -82,6 +83,7 @@ h2 {
   padding: 2rem;
   min-height: 65vh;
   gap: 0;
+  margin-bottom: 20px;
 }
 
 .side-right {
@@ -287,6 +289,8 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 }
 
 .item-card {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   transform: translateY(20px);
   opacity: 0;
@@ -305,9 +309,10 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 
 .item-img {
   display: block;
-  width: 300px;
+  zoom: 75%;
   height: 250px;
-  margin-bottom: 5px;
+  width: 250px;
+  margin-bottom: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: transform 0.25s ease;
@@ -316,6 +321,20 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 .item-img:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.links-to-else {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+a.disabled {
+  color: #a5946a;
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 /* Animacje */
@@ -434,6 +453,7 @@ footer {
 
 .landing-content {
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
