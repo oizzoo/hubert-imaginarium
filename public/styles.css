@@ -136,7 +136,6 @@ h2 {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  transition: background 0.16s ease-in-out;
 }
 
 .side-menu a.menu-link:hover,
@@ -166,7 +165,7 @@ h2 {
 nav.side-menu > ul > li.has-submenu > ul.submenu {
   display: none;
   margin-left: 0;
-  max-width: 200px; /* Dopasowane do szerokości side-menu */
+  max-width: 200px;
   white-space: normal;
   word-wrap: break-word;
   position: relative;
@@ -226,11 +225,10 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
   padding: 0;
   border-radius: 4px;
   font-size: 0.95rem;
-  white-space: normal; /* Pozwala na podział linii z <br> */
-  line-height: 1.2; /* Lepsze odstępy dla tekstu z podziałem */
-  display: inline-block; /* Zapewnia wyrównanie tekstu */
-  text-align: left; /* Wyrównanie tekstu do lewej */
-  transition: background-color 0.2s ease;
+  white-space: normal;
+  line-height: 1.2;
+  display: inline-block;
+  text-align: left;
 }
 
 .submenu a.submenu-link:hover,

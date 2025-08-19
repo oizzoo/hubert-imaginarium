@@ -190,6 +190,27 @@
     align-items: center;
   }
 
+  nav.side-menu > ul > li.has-submenu > ul.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 245, 0.95);
+    border: 1px solid #d3c8b6;
+    border-radius: 6px;
+    box-shadow: 2px 2px 5px rgba(70, 56, 42, 0.2);
+    padding: 0.5rem;
+    z-index: 10;
+    min-width: 160px;
+    text-align: center;
+  }
+
+  nav.side-menu > ul > li.has-submenu:hover > ul.submenu,
+  nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
+    display: block;
+  }
+
   #language-switcher {
     position: static;
     margin-top: 1rem;
