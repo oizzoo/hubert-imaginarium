@@ -8,6 +8,7 @@
   .page-grid {
     flex: 0 0 auto;
     height: 70%;
+    min-height: 0;
   }
 
   .landing-page {
@@ -35,6 +36,7 @@
   .page-grid {
     flex: 0 0 auto;
     height: 50%;
+    min-height: 0;
   }
 
   .landing-page {
@@ -228,5 +230,9 @@
 
   footer {
     margin-top: 20px;
+  }
+
+  .video-banner {
+    display: none;
   }
 }

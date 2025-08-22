@@ -93,6 +93,18 @@ h2 {
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
   padding: 0;
+  margin: 0;
+}
+
+.video-banner {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: 0;
+  margin: 0;
 }
 
 /* Menu boczne po lewej */
