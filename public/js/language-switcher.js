@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
     '/en-materialy/opowiadanie': '/materialy/opowiadanie',
     '/materialy/uniwersum-drugiej-ziemi/intro-dialog-uml': '/en-materialy/uniwersum-drugiej-ziemi/intro-dialog-uml',
     '/en-materialy/uniwersum-drugiej-ziemi/intro-dialog-uml': '/materialy/uniwersum-drugiej-ziemi/intro-dialog-uml',
+    '/materialy/uniwersum-drugiej-ziemi/worldbuilding': '/en-materialy/uniwersum-drugiej-ziemi/worldbuilding',
+    '/en-materialy/uniwersum-drugiej-ziemi/worldbuilding': '/materialy/uniwersum-drugiej-ziemi/worldbuilding',
   };
 
   btnPL.addEventListener('click', () => {

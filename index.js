@@ -224,6 +224,28 @@ app.get("/en-materialy/uniwersum-drugiej-ziemi/intro-dialog-uml", (req, res) => 
   })
 });
 
+app.get("/materialy/uniwersum-drugiej-ziemi/worldbuilding", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "pl",
+    title: "Intro-dialog-uml",
+    body: "worldbuilding",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
+app.get("/en-materialy/uniwersum-drugiej-ziemi/worldbuilding", (req, res) => {
+  res.render("layout-pdf", {
+    lang: "en",
+    title: "Intro-dialog-uml",
+    body: "worldbuilding",
+    success: null, 
+    error: null, 
+    oldInput: {} 
+  })
+});
+
 // 404 dla innych ścieżek - opcjonalnie
 app.use((req, res) => {
   const isEnglish = req.url.startsWith('/en');
