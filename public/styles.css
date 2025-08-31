@@ -42,7 +42,6 @@ header > div:first-child {
 
 .About-H1 {
   font-size: 1.5rem;
-  text-align: justify;
 }
 
 .About-P {
@@ -95,6 +94,7 @@ h2 {
   min-height: 65vh;
   gap: 0;
   margin-bottom: 20px;
+  overflow-y: auto;
 }
 
 .side-right {
@@ -272,6 +272,7 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 /* Treść strony po prawej */
 .content-main {
   display: flex;
+  overflow-y: auto;
   flex: 1;
   padding: 2rem 0;
   font-size: 1.16rem;
@@ -297,10 +298,6 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
   align-items: center;
   gap: 0.8rem;
   text-align: center;
-}
-
-.worldbuilding-ul ul{
-  list-style: circle;
 }
 
 .content-main ul li {
@@ -421,6 +418,14 @@ a:focus {
 
 .highlight-text br {
   line-height: 1.8;
+}
+
+.text-div {
+  display: flex;
+  overflow-y: auto;
+  justify-content: center;
+  height: 200px;
+  width: 100%;
 }
 
 .normal-text {
