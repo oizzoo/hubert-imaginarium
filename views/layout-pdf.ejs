@@ -20,11 +20,7 @@
              <%- include(body) %>
 
     </section>
-    <div class="side-right">
-    <% if (typeof showBanner === 'undefined' || showBanner) { %>
-    <%- include("partials/banner") %>
-    <% } %>
-    </div>
+    <div class="side-right"><%- include('partials/banner') %></div>
   </main>
 
   <%- include('partials/footer') %>

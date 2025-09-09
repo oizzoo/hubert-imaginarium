@@ -16,5 +16,14 @@
     "express": "^5.1.0",
     "node-fetch": "^3.3.2",
     "nodemailer": "^7.0.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oizzoo/hubert-imaginarium.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/oizzoo/hubert-imaginarium/issues"
+  },
+  "homepage": "https://github.com/oizzoo/hubert-imaginarium#readme"
 }

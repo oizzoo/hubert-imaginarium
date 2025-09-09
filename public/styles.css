@@ -46,7 +46,8 @@ header > div:first-child {
 
 .About-P {
   text-align: justify;
-  padding: 15px;
+  margin: 0px 10px 10px 10px;
+  padding: 10px;
   font-family: 'Arial', sans-serif;
 }
 
@@ -331,11 +332,11 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 }
 
 .about-img {
-  display: block;
-  height: 250px;
-  width: 250px;
+  float: left;
+  height: 350px;
+  width: 350px;
   object-fit: cover;
-  margin-bottom: 15px;
+  margin: 15px 35px 15px 35px  ;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   transition: transform 0.25s ease;
@@ -345,8 +346,8 @@ nav.side-menu > ul > li.has-submenu:focus-within > ul.submenu {
 .item-img {
   display: block;
   zoom: 75%;
-  height: 250px;
-  width: 250px;
+  height: 150px;
+  width: 150px;
   margin-bottom: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
